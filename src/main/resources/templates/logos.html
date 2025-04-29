@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArCash - Propuestas de Logo</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧉</text></svg>">
-    <style>
+
+    <style th:inline="none">
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap');
 
         :root {
@@ -99,7 +100,7 @@
 <body>
     <div class="contenedor">
         <h1>Propuestas de Logotipo ArCash</h1>
-        
+
         <div class="grid-logos">
             <!-- Propuesta 1 - Minimalista -->
             <div class="logo-card">
@@ -234,7 +235,7 @@
             <!-- Propuesta 11 - Borde Activo -->
             <div class="logo-card">
                 <div class="logo-preview">
-                    <div class="logo-text" style="color: var(--azul-arg); 
+                    <div class="logo-text" style="color: var(--azul-arg);
                                               border: 3px solid var(--dorado);
                                               padding: 0.5rem 1rem;
                                               border-radius: 8px">
@@ -253,8 +254,8 @@
                 <div class="logo-preview">
                     <div style="position: relative; display: inline-block">
                         <div class="logo-text" style="color: var(--gris-tech)">ArCash</div>
-                        <div style="position: absolute; top: -5px; left: -5px; 
-                                  width: 100%; height: 100%; border: 2px solid var(--azul-arg); 
+                        <div style="position: absolute; top: -5px; left: -5px;
+                                  width: 100%; height: 100%; border: 2px solid var(--azul-arg);
                                   border-radius: 4px; transform: rotate(3deg); z-index: -1;">
                         </div>
                     </div>
