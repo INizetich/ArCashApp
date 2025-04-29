@@ -10,4 +10,9 @@ public class DemoController {
     public String home(){
         return "demo";
     }
+
+    @RequestMapping("/propuestas")
+    public String propuestas(){
+        return "logos";
+    }
 }

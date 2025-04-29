@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArCash - Propuestas de Logo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧉</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap');
+
+        :root {
+            --azul-arg: #74ACDF;
+            --dorado: #FFD700;
+            --gris-tech: #2D3142;
+            --verde-tech: #00C897;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAFAFA;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--gris-tech);
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 3rem;
+        }
+
+        .grid-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .logo-card {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo-preview {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .color-chip {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        /* Variantes especiales */
+        .gradiente-arg {
+            background: linear-gradient(45deg, var(--azul-arg), var(--dorado));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sombra-dorada {
+            text-shadow: 2px 2px 0 var(--dorado);
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Propuestas de Logotipo ArCash</h1>
+        
+        <div class="grid-logos">
+            <!-- Propuesta 1 - Minimalista -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--gris-tech)">
+                        Ar<span style="color: var(--azul-arg)">Cash</span>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 2 - Gradiente Patriótico -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text gradiente-arg">
+                        ArCash
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--dorado)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 3 - Tech Moderno -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--verde-tech)">
+                        ArCash<span style="font-size: 1.2em">▶</span>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--verde-tech)"></div>
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 4 - Sombra Activa -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text sombra-dorada" style="color: var(--azul-arg)">
+                        ArCash
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--dorado)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 5 - Enfoque Monetario -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--gris-tech)">
+                        <span style="color: var(--dorado)">$</span>ArCash
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--dorado)"></div>
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 6 - Bold Contrast -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--blanco); background: var(--gris-tech); padding: 0.5rem 1rem; border-radius: 8px">
+                        ArCash
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 7 - Linea Dinámica -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--gris-tech)">
+                        Ar<span style="border-bottom: 3px solid var(--azul-arg)">Cash</span>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 8 - Doble Tonality -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text">
+                        <span style="color: var(--azul-arg)">Ar</span><span style="color: var(--dorado)">Cash</span>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--dorado)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 9 - Pixel Perfect -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--gris-tech); letter-spacing: -2px">
+                        AR<span style="color: var(--azul-arg)">CASH</span>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 10 - Futurista -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--gris-tech)">
+                        <span style="color: var(--verde-tech)">▶</span>ArCash
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--verde-tech)"></div>
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 11 - Borde Activo -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div class="logo-text" style="color: var(--azul-arg); 
+                                              border: 3px solid var(--dorado);
+                                              padding: 0.5rem 1rem;
+                                              border-radius: 8px">
+                        ArCash
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--dorado)"></div>
+                    <div class="color-chip" style="background: var(--blanco)"></div>
+                </div>
+            </div>
+
+            <!-- Propuesta 12 - Superposición Moderna -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <div style="position: relative; display: inline-block">
+                        <div class="logo-text" style="color: var(--gris-tech)">ArCash</div>
+                        <div style="position: absolute; top: -5px; left: -5px; 
+                                  width: 100%; height: 100%; border: 2px solid var(--azul-arg); 
+                                  border-radius: 4px; transform: rotate(3deg); z-index: -1;">
+                        </div>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <div class="color-chip" style="background: var(--azul-arg)"></div>
+                    <div class="color-chip" style="background: var(--gris-tech)"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
