@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NizaVault | Security Solutions</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&family=Unna&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="theme-control">
+    <button id="theme-switcher">
+        <svg width="22" height="22" viewBox="0 0 24 24">
+            <path class="sun" d="M12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0-2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z"/>
+            <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
+        </svg>
+    </button>
+</div>
+
+<main class="main-container">
+    <div class="brand-identity">
+        <!-- Logotipo de seguridad premium -->
+        <svg class="brand-mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 20 L100 40 V80 L60 100 L20 80 V40 Z" class="vault-shape"/>
+            <circle cx="60" cy="60" r="18" class="security-core"/>
+            <path d="M60 42 L60 78 M48 60 L72 60" class="access-cross"/>
+        </svg>
+
+        <div class="brand-typography">
+            <span class="brand-name">AR</span>
+            <span class="brand-name-sub">Cash</span>
+        </div>
+        <p class="brand-tagline">BEST VIRTUAL WALLET</p>
+    </div>
+
+    <div class="access-interface">
+        <button class="access-btn primary">
+            <span>Login</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <button class="access-btn secondary">Sign-up</button>
+        <a href="#" class="access-link">Recuperar credenciales</a>
+    </div>
+</main>
+
+<script th:src="@{/js/demo.js}"></script>
+</body>
+</html>

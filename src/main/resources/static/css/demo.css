@@ -1,0 +1,203 @@
+:root {
+    /* Paleta ejecutiva */
+    --obsidian: #0A0A0A;
+    --carbon: #1E1E1E;
+    --titanium: #E8E8E8;
+    --platinum: #F3F3F3;
+    --naval: #16263E;
+    --cobalt: #2A4D7A;
+
+    /* Modo claro */
+    --bg-primary: var(--platinum);
+    --bg-secondary: white;
+    --text-primary: var(--obsidian);
+    --text-accent: var(--naval);
+    --border-light: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+    --bg-primary: var(--carbon);
+    --bg-secondary: var(--obsidian);
+    --text-primary: var(--titanium);
+    --text-accent: var(--cobalt);
+    --border-light: rgba(255, 255, 255, 0.08);
+}
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.4s ease;
+}
+
+/* Control de tema */
+.theme-control {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+}
+
+#theme-switcher {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+#theme-switcher svg {
+    width: 22px;
+    height: 22px;
+}
+
+.sun {
+    fill: var(--text-primary);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.sun-ray {
+    stroke: var(--text-primary);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#theme-switcher:hover .sun {
+    opacity: 1;
+}
+
+#theme-switcher:hover .sun-ray {
+    opacity: 0.4;
+}
+
+/* Identidad de marca */
+.brand-identity {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.brand-mark {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+}
+
+.vault-shape {
+    fill: none;
+    stroke: var(--text-accent);
+    stroke-width: 2.5;
+}
+
+.security-core {
+    fill: var(--text-accent);
+    stroke: var(--bg-primary);
+    stroke-width: 2;
+}
+
+.access-cross {
+    stroke: var(--bg-primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.brand-typography {
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.brand-name {
+    font-family: 'Unna', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.brand-name-sub {
+    font-family: 'Unna', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-accent);
+}
+
+.brand-tagline {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    opacity: 0.7;
+}
+
+/* Interfaz de acceso */
+.access-interface {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 320px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
+}
+
+.access-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.access-btn.primary {
+    background-color: var(--text-accent);
+    color: white;
+    border: none;
+}
+
+.access-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.access-btn.secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+.access-btn.secondary:hover {
+    border-color: var(--text-accent);
+}
+
+.access-link {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-accent);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: color 0.2s;
+}
+
+.access-link:hover {
+    text-decoration: underline;
+}
