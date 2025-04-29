@@ -15,4 +15,9 @@ public class DemoController {
     public String propuestas(){
         return "logos";
     }
+
+    @RequestMapping("/error")
+    public String error(){
+        return "error";
+    }
 }

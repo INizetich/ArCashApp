@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurso no encontrado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/error-styles.css}">
+</head>
+<body>
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-number">404</div>
+        <h1 class="error-title">¡Ups! Página no encontrada</h1>
+        <p class="error-message">El recurso que buscas no existe o ha sido movido.</p>
+        <div class="error-actions">
+            <a th:href="@{/}" class="error-btn secondary">
+                Ir a la Página de Inicio
+            </a>
+        </div>
+    </div>
+</div>
+<div class="global-footer">
+    <p>Guía 3 JDBC |
+        <a href="https://github.com/ValeroTomas " target="_blank" class="autor-link">Tomás Valero</a> |
+        <a href="https://github.com/INizetich" target="_blank" class="autor-link">Ignacio Nizetich</a>
+    </p>
+</div>
+</body>
+</html>
