@@ -16,8 +16,5 @@ public class DemoController {
         return "logos";
     }
 
-    @RequestMapping("/error")
-    public String error(){
-        return "error";
-    }
+
 }
