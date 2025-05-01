@@ -16,7 +16,10 @@ import lombok.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Credentials credentials;
 
     @NotBlank( message = "el nombre no puede estar vacio")
     private String nombre;
