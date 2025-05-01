@@ -5,6 +5,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 @Getter
@@ -22,10 +27,10 @@ public class User {
     private Credentials credentials;
 
     @NotBlank( message = "el nombre no puede estar vacio")
-    private String nombre;
+    private String name;
 
     @NotBlank( message = "el apellido no puede estar vacio")
-    private String apellido;
+    private String lastName;
 
     @NotBlank( message = "el dni no puede estar vacio")
     @Column(unique = true)
@@ -36,10 +41,17 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @NotBlank(message = "La fecha no puede estar vacia")
-    private String fecha_Creacion;
+
+    private String creationDate;
 
     @NotBlank(message = "El alias no puede estar vacio")
     @Column(unique = true)
     private String alias;
+
+    @PrePersist
+    private void generarFechaCreacion(){
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime fechaActual = LocalDateTime.now();
+        this.creationDate = fechaActual.format(formateador);
+    }
 }
