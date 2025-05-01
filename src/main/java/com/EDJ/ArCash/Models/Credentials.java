@@ -1,5 +1,6 @@
 package com.EDJ.ArCash.Models;
 
+import com.EDJ.ArCash.Models.Imp.Permissions;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -18,16 +19,26 @@ public class Credentials {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "user")
-    @JoinColumn(referencedColumnName = "id_user")
+    @OneToOne
+    @JoinColumn(name = "id_user")
     private User user;
 
-    @NotBlank
+    @NotBlank(message = "El nombre de usuario no puede estar vacio")
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "La password no puede estar vacia")
     private String pass;
 
-    @NotBlank
-    private enum permissions{USER, ADMIN};
+
+    private String permissions;
+
+
+    @PrePersist
+    private void PrePersist(){
+        InitializePermission();
+    }
+
+    private void InitializePermission(){
+        permissions = Permissions.USER.toString();
+    }
 }
