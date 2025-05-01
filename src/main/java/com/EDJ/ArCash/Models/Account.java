@@ -40,7 +40,7 @@ public class Account {
     private String account_cvu;
 
 
-    /// SE SETEA POR DEFECTO LA CUENTA EN TIPO PESOS, LA DE DOLARES LA ABRE EL USUARIO SI ASI LO QUIERA
+    /// SE SETEA POR DEFECTO LA CUENTA EN TIPO PESOS(LA DE DOLARES LA ABRE EL USUARIO SI ASI LO QUIERA)
     private String account_type;
 
 
