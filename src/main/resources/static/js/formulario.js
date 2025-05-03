@@ -2,61 +2,81 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==== FORMULARIO ====
     const formulario = document.getElementById('formulario');
     const respuesta = document.getElementById('respuesta');
+    const MAX_LENGTH = 50;
 
-    formulario.addEventListener('submit', (e) => {
+    const validarTexto = (texto) => /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,}$/.test(texto);
+    const validarEmail = (email) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+
+    formulario.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        mostrarMensaje('Procesando...', 'blue');
+        
         const formData = new FormData(formulario);
+        const campos = {
+            nombre: formData.get('nombre').trim(),
+            apellido: formData.get('apellido').trim(),
+            dni: formData.get('dni').trim(),
+            email: formData.get('email').trim(),
+            alias: formData.get('alias').trim()
+        };
 
-        const nombre = formData.get('nombre').trim();
-        const apellido = formData.get('apellido').trim();
-        const dni = formData.get('dni').trim();
-        const email = formData.get('email').trim();
-        const alias = formData.get('alias').trim();
-
-        if (!nombre || !apellido || !dni || !email || !alias) {
+        // Validaciones
+        if (Object.values(campos).some(campo => !campo)) {
             mostrarMensaje('Todos los campos son obligatorios.', 'red');
             return;
         }
 
-        if (!/^\d{7,10}$/.test(dni)) {
+        if (!validarTexto(campos.nombre) || !validarTexto(campos.apellido)) {
+            mostrarMensaje('Nombre y apellido solo deben contener letras.', 'red');
+            return;
+        }
+
+        if (!/^\d{7,10}$/.test(campos.dni)) {
             mostrarMensaje('El DNI debe tener entre 7 y 10 dígitos numéricos.', 'red');
             return;
         }
 
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (!validarEmail(campos.email)) {
             mostrarMensaje('Ingrese un email válido.', 'red');
             return;
         }
 
-        // Crear objeto JSON
-        const resultado = {
-            name: nombre,
-            lastName: apellido,
-            dni: dni,
-            email: email,
-            alias: alias
-        };
+        if (Object.values(campos).some(campo => campo.length > MAX_LENGTH)) {
+            mostrarMensaje(`Ningún campo puede exceder ${MAX_LENGTH} caracteres.`, 'red');
+            return;
+        }
 
-        // Enviar al backend con fetch
-        fetch('/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(resultado)
-        })
-            .then(response => {
-                if (!response.ok) throw new Error("Error al enviar el formulario.");
-                return response.text();
-            })
-            .then(data => {
-                mostrarMensaje('Usuario registrado correctamente', 'green');
-                formulario.reset(); // limpiar campos
-            })
-            .catch(error => {
-                mostrarMensaje('Error: ' + error.message, 'red');
+        try {
+            const response = await fetch('/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.content
+                },
+                body: JSON.stringify({
+                    name: campos.nombre,
+                    lastName: campos.apellido,
+                    dni: campos.dni,
+                    email: campos.email,
+                    alias: campos.alias
+                })
             });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Error en el servidor');
+            }
+
+            mostrarMensaje('Usuario registrado correctamente', 'green');
+            formulario.reset();
+        } catch (error) {
+            mostrarMensaje(
+                error.message === 'Failed to fetch' 
+                    ? 'Error de conexión. Por favor, intente más tarde.' 
+                    : `Error: ${error.message}`, 
+                'red'
+            );
+        }
     });
 
     function mostrarMensaje(mensaje, color) {
@@ -65,23 +85,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==== CAMBIO DE TEMA ====
-    const switcher = document.getElementById("theme-switcher");
-    const currentTheme = localStorage.getItem("theme");
+    const inicializarTema = () => {
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('nv-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (currentTheme === "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-    }
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.removeAttribute('data-theme');
+        }
 
-    if (switcher) {
-        switcher.addEventListener("click", () => {
-            const theme = document.documentElement.getAttribute("data-theme");
-            if (theme === "dark") {
-                document.documentElement.removeAttribute("data-theme");
-                localStorage.setItem("theme", "light");
-            } else {
-                document.documentElement.setAttribute("data-theme", "dark");
-                localStorage.setItem("theme", "dark");
-            }
-        });
-    }
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener('click', () => {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                html.setAttribute('data-theme', isDark ? '' : 'dark');
+                localStorage.setItem('nv-theme', isDark ? 'light' : 'dark');
+            });
+        }
+    };
+
+    inicializarTema();
 });

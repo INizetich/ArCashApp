@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurso no encontrado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/error-styles.css}">
+</head>
+<body>
+<div class="theme-control">
+    <button id="theme-switcher">
+        <svg width="22" height="22" viewBox="0 0 24 24">
+            <path class="sun" d="M12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0-2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z"/>
+            <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
+        </svg>
+    </button>
+</div>
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-number">404</div>
+        <h1 class="error-title">¡Ups! Página no encontrada</h1>
+        <p class="error-message">El recurso que buscas no existe o ha sido movido.</p>
+        <div class="error-actions">
+            <a th:href="@{/home}" class="error-btn secondary">
+                Ir a la Página de Inicio
+            </a>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/theme.js}"></script>
+</body>
+</html>
