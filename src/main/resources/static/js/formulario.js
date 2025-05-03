@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Enviar al backend con fetch
-        fetch('/formulario', {
+        fetch('/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
