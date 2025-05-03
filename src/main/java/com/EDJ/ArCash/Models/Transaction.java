@@ -63,8 +63,6 @@ public class Transaction {
     private void verifyAmount(){
         if(balance < 0){
             throw new IllegalArgumentException("El monto no puede ser negativo");
-        }else if (balance.toString().isEmpty()){
-            throw new IllegalArgumentException("El monto no puede estar vacio");
         }
     }
 
