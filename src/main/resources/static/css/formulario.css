@@ -1,57 +1,143 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #279eff;
+:root {
+    /* Paleta ejecutiva */
+    --obsidian: #0A0A0A;
+    --carbon: #1E1E1E;
+    --titanium: #E8E8E8;
+    --platinum: #F3F3F3;
+    --naval: #16263E;
+    --cobalt: #2A4D7A;
+
+    /* Modo claro */
+    --bg-primary: var(--platinum);
+    --bg-secondary: white;
+    --text-primary: var(--obsidian);
+    --text-accent: var(--naval);
+    --border-light: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+    --bg-primary: var(--carbon);
+    --bg-secondary: var(--obsidian);
+    --text-primary: var(--titanium);
+    --text-accent: var(--cobalt);
+    --border-light: rgba(255, 255, 255, 0.08);
+}
+
+/* Reset general */
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    transition: background 0.4s ease;
+    padding: 1rem;
 }
 
-form#form {
-    background-color: #d8d8d8;
-    padding: 30px 40px;
+/* Control de tema */
+.theme-control {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+}
+
+#theme-switcher {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+#theme-switcher svg {
+    width: 22px;
+    height: 22px;
+}
+
+.sun {
+    fill: var(--text-primary);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.sun-ray {
+    stroke: var(--text-primary);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#theme-switcher:hover .sun {
+    opacity: 1;
+}
+
+#theme-switcher:hover .sun-ray {
+    opacity: 0.4;
+}
+
+/* Estilos del formulario */
+form#formulario {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
     width: 100%;
     max-width: 400px;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 
-form label {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #333;
+form#formulario label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
 }
 
-form input {
-    padding: 10px;
-    margin-top: 5px;
-    font-size: 14px;
-    border: 1px solid #d8d8d8;
+form#formulario input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-light);
     border-radius: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     transition: border-color 0.3s ease;
 }
 
-form input:focus {
-    border-color: #279eff;
+form#formulario input:focus {
+    border-color: var(--text-accent);
     outline: none;
 }
 
-form button[type="submit"] {
-    margin-top: 25px;
-    padding: 12px;
-    background-color: #279eff;
-    color: #d8d8d8;
-    font-size: 16px;
+form#formulario button[type="submit"] {
+    padding: 1rem;
+    background-color: var(--text-accent);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-form button[type="submit"]:hover {
-    background-color: #279eff;
+form#formulario button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#respuesta {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    white-space: pre-wrap;
 }

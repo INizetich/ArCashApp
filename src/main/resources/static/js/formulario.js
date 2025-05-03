@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ==== FORMULARIO ====
     const formulario = document.getElementById('formulario');
     const respuesta = document.getElementById('respuesta');
 
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 mostrarMensaje('Usuario registrado correctamente', 'green');
+                formulario.reset(); // limpiar campos
             })
             .catch(error => {
                 mostrarMensaje('Error: ' + error.message, 'red');
@@ -60,5 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function mostrarMensaje(mensaje, color) {
         respuesta.textContent = mensaje;
         respuesta.style.color = color;
+    }
+
+    // ==== CAMBIO DE TEMA ====
+    const switcher = document.getElementById("theme-switcher");
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
+
+    if (switcher) {
+        switcher.addEventListener("click", () => {
+            const theme = document.documentElement.getAttribute("data-theme");
+            if (theme === "dark") {
+                document.documentElement.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+            }
+        });
     }
 });
