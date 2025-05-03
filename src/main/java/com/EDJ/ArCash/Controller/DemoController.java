@@ -8,15 +8,9 @@ import com.EDJ.ArCash.Models.User;
 @Controller
 public class DemoController {
 
-    @RequestMapping({"/home", "/"})
-    public String home(){
+    @RequestMapping("/demo")
+    public String demo(){
         return "demo";
     }
-
-    @RequestMapping("/propuestas")
-    public String propuestas(){
-        return "logos";
-    }
-
 
 }
