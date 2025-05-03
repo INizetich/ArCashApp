@@ -48,6 +48,13 @@ public class User {
     @Column(unique = true)
     private String alias;
 
+    public User (String name,String lastName,String dni,String email,String alias){
+        this.name = name;
+        this.lastName = lastName;
+        this.dni = dni;
+        this.email = email;
+        this.alias = alias;
+    }
 
     @PrePersist
     private void PrePersist(){

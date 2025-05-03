@@ -12,5 +12,8 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     * */
 
     /// este metodo nos va a servir para verificar si el cvu existe en la base de datos antes de que se cargue una nueva cuenta
-    boolean existsByAccountCvu(String accountCvu);
+    boolean existsByAccountCvu(String account_cvu);
+
+    //este metodo nos va a servir para verificar si el alias existe en la base de datos antes de que se cargue una nueva cuenta
+    boolean existsByAccountNickname(String account_nickname);
 }

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 @Getter
 @Entity
@@ -32,6 +31,12 @@ public class Credentials {
 
     private String permissions;
 
+
+    public Credentials(User user,String username, String pass) {
+        this.user = user;
+        this.username = username;
+        this.pass = pass;
+    }
 
     @PrePersist
     private void PrePersist(){
