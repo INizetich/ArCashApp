@@ -1,17 +1,20 @@
 package com.EDJ.ArCash.Service;
 
 import com.EDJ.ArCash.Models.Account;
-import com.EDJ.ArCash.Models.Exc.AlreadyExistCvu;
 import com.EDJ.ArCash.Models.Imp.AccountTypes;
+import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 @Service
 public class AccountService {
+
+
+
     @Autowired
     private final AccountRepository accountRepository;
 
@@ -21,13 +24,18 @@ public class AccountService {
     }
 
 
-    public Account createAccount(Account account) {
-        account.setAccountType(AccountTypes.PESOS.toString());
+    public Account createAccount(User user, String accountType) {
+        Account account = new Account();
+        account.setUser(user);
+        account.setAccountType(accountType);
         account.setBalance(0.0);
         account.setAccountNickname(generateUniqueNickname());
         account.setAccountCvu(generateUniqueCvu());
         return accountRepository.save(account);
     }
+
+
+
 
 
     /// -----------------------METODOS PRIVATE PARA GENERAR UN ALIAS ALEATORIO Y EL CVU DE LA CUENTA -----------------------
@@ -40,7 +48,7 @@ public class AccountService {
         return account_nickname;
     }
 
-    public static String generateRandomNickname() {
+    private String generateRandomNickname() {
         String[] options = {"happy", "brave", "fast", "calm", "smart", "silly", "cool", "kind", "wild", "bold",
                 "tiger", "lion", "panda", "eagle", "fox", "whale", "zebra", "wolf", "rabbit", "koala",
                 "red", "green", "blue", "yellow", "black", "white", "pink", "orange", "purple", "brown",
@@ -50,15 +58,14 @@ public class AccountService {
 
         String first = options[rand.nextInt(options.length)];
         String second = options[rand.nextInt(options.length)];
-        String third = options[rand.nextInt(options.length)];
 
 
         char sufijo1 = (char) ('A' + rand.nextInt(26));
         char sufijo2 = (char) ('A' + rand.nextInt(26));
 
 
-        String alias = (first + "." + second + "." + third + "." + sufijo1 + sufijo2);
-        return alias.length() > 15 ? alias.substring(0, 15) : alias;
+        String alias = (first + "." + second + "." + sufijo1 + sufijo2);
+        return alias.length() > 25 ? alias.substring(0, 25).toUpperCase() : alias.toUpperCase();
     }
 
     private String generateUniqueCvu() {
