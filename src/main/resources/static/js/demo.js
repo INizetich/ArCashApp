@@ -23,3 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+document.getElementById('signup-btn').addEventListener('click', () => {
+    window.location.href = '/formulario';
+});

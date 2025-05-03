@@ -18,7 +18,7 @@ public class UserController {
     @PostMapping("/create")
     public String register(@RequestBody User user){
         userService.insertarUsuario(user);
-        return "formulario";
+        return "Usuario registrado con exito";
     }
 
 

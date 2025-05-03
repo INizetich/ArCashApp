@@ -1,16 +1,14 @@
 package com.EDJ.ArCash.Models;
 
-import com.EDJ.ArCash.Models.Imp.AccountTypes;
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Random;
+
 
 
 @Getter
