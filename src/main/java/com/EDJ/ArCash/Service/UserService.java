@@ -10,17 +10,22 @@ public class UserService {
 
     private UserRepository userRepository;
 
-    @Autowired
     private final AccountService accountService;
 
-    public UserService(UserRepository userRepository, AccountService accountService) {
+    private final CredentialsService credentialsService;
+
+    public UserService(UserRepository userRepository, AccountService accountService, CredentialsService credentialsService) {
         this.userRepository = userRepository;
         this.accountService = accountService;
+        this.credentialsService = credentialsService;
     }
 
 
     public void insertarUsuario(User user){
+        user.setName(user.getName().substring(0,1).toUpperCase() + user.getName().substring(1).toLowerCase());
+        user.setLastName(user.getLastName().substring(0,1).toUpperCase() + user.getLastName().substring(1).toLowerCase());
         userRepository.save(user);
+        credentialsService.createCredentials(user);
         accountService.createAccount(user, "PESOS");
     }
 
