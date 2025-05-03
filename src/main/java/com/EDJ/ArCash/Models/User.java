@@ -15,11 +15,15 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @ToString
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private Long id_user;
 
+    /// un usuario puede tener una credencial, una credencial corresponde a un usuario
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Credentials credentials;
 
@@ -29,25 +33,36 @@ public class User {
 
 
     @NotBlank( message = "el nombre no puede estar vacio")
+    @Column(name = "name")
     private String name;
 
     @NotBlank( message = "el apellido no puede estar vacio")
+    @Column(name = "last_name")
     private String lastName;
 
     @NotBlank( message = "el dni no puede estar vacio")
-    @Column(unique = true)
+    @Column(unique = true, name = "dni")
     private String dni;
+
     @NotBlank(message = "el email no puede estar vacio")
     @Email(message = "El email debe tener formato email")
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
 
-
+    @Column(name = "creation_date")
     private String creationDate;
+
     @NotBlank(message = "El alias no puede estar vacio")
-    @Column(unique = true)
+    @Column(unique = true, name = "alias")
     private String alias;
 
+    public User (String name,String lastName,String dni,String email,String alias){
+        this.name = name;
+        this.lastName = lastName;
+        this.dni = dni;
+        this.email = email;
+        this.alias = alias;
+    }
 
     @PrePersist
     private void PrePersist(){

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
+    <title>Formulario</title>
+</head>
+<body>
+    <form id="formulario">
+        <label>Nombre</label>
+        <input type="text" name="nombre">
+
+        <label>Apellido</label>
+        <input type="text" name="apellido">
+
+        <label>dni</label>
+        <input type="text" name="dni" required pattern="{7,10}">
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Alias</label>
+        <input type="text" name="alias" required>
+
+        <button type="submit">Enviar</button>
+
+        <pre id="respuesta"></pre>
+    </form>
+    <script th:src="@{/js/formulario.js}"></script>
+</body>
+</html>
