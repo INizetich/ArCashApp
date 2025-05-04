@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
         html.setAttribute('data-theme', 'dark');
-    } else {
-        html.removeAttribute('data-theme');
     }
 
     // Cambiar tema si hay botón
@@ -27,3 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
