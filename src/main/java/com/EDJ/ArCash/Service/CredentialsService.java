@@ -15,7 +15,6 @@ public class CredentialsService {
     public CredentialsService(CredentialRepository credentialRepository, PasswordEncoder passwordEncoder) {
         this.credentialRepository = credentialRepository;
         this.passwordEncoder = passwordEncoder;
-
     }
 
     public Credentials createCredentials(User user){
@@ -30,7 +29,6 @@ public class CredentialsService {
 
 
     /// METODOS PRIVADOS PARA LA GENERACIÓN DE UN NICKNAME AUTOMATICO
-
     private String generateUniqueNickname(User user) {
         String nickname = user.getName().substring(0, 1).toUpperCase() +
                 user.getLastName().substring(0, 1).toUpperCase() +
