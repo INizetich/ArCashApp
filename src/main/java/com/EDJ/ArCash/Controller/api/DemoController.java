@@ -11,9 +11,4 @@ public class DemoController {
         return "demo";
     }
 
-    @RequestMapping("/demo")
-    public String demo(){
-        return "demo";
-    }
-
 }

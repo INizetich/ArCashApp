@@ -13,14 +13,21 @@
     --text-primary: var(--obsidian);
     --text-accent: var(--naval);
     --border-light: rgba(0, 0, 0, 0.08);
+
+
+    --border: #ccc;
 }
 
 [data-theme="dark"] {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
     --bg-primary: var(--carbon);
     --bg-secondary: var(--obsidian);
     --text-primary: var(--titanium);
     --text-accent: var(--cobalt);
     --border-light: rgba(255, 255, 255, 0.08);
+
+
+
 }
 
 /* Reset de estilos */
@@ -201,3 +208,84 @@ body {
 .access-link:hover {
     text-decoration: underline;
 }
+
+
+.global-footer {
+
+    background-color: var(--bg-primary);
+    color: var(--text-primary);            /* Texto acorde al tema */
+    transition: all 0.3s ease;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 10px;
+    z-index: 100;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.global-footer p {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.global-footer:hover {
+    opacity: 0.8;
+}
+
+
+.menu-footer {
+
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-light);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.85rem; /* Tamaño más pequeño */
+    font-weight: 300; /* Texto más fino */
+    letter-spacing: 0.5px; /* Espaciado sutil entre letras */
+    padding-top: 15px;
+    border-top: 1px solid #f1f3f5; /* Línea muy sutil */
+
+
+}
+
+.menu-footer:hover {
+    opacity: 1; /* Se hace un poco más visible al pasar el mouse */
+}
+
+
+.global-footer,
+.menu-footer,
+.access-interface,
+.access-btn,
+.autor-link {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
+
+.autor-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-accent); /* Usa el azul correspondiente al modo */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
