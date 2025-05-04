@@ -1,11 +1,8 @@
 package com.EDJ.ArCash;
 
-import com.EDJ.ArCash.Models.User;
-import com.EDJ.ArCash.Service.UserService;
-import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 
 /// ES POSIBLE BUILDEAR LA APP EN RAILWAY SIN DOCKER FILE. SOLO JAVA 17.
