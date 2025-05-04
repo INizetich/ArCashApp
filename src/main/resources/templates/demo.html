@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NizaVault | Security Solutions</title>
+    <title>ArCash™ | Virtual Wallet</title>
     <link rel="stylesheet" th:href="@{/css/demo.css}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&family=Unna&display=swap" rel="stylesheet">
 </head>
@@ -40,11 +40,12 @@
                 <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke-width="2" stroke-linecap="round"/>
             </svg>
         </button>
-        <button class="access-btn secondary">Sign-up</button>
-        <a href="#" class="access-link">Recuperar credenciales</a>
+        <a th:href="@{/register}" class="access-btn secondary">Sign-up</a>
+        <a th:href="@{/404}" class="access-link">Recuperar credenciales</a>
     </div>
 </main>
 
 <script th:src="@{/js/demo.js}"></script>
+<script th:src="@{/js/theme.js}"></script>
 </body>
 </html>
