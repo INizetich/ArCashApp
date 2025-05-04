@@ -8,15 +8,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-/// hola
 @Configuration
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/home","/register", "/css/*", "/js/*", "/error", "/404").permitAll() // Endpoints libres
+                        .requestMatchers("/","/home","/register", "/css/*", "/js/*", "/error", "/404", "/create").permitAll() // Endpoints libres
                         .anyRequest().authenticated() // Los demás requieren login
                 )
                 .formLogin(form -> form

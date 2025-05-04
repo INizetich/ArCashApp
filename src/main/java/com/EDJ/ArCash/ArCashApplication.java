@@ -1,8 +1,11 @@
 package com.EDJ.ArCash;
 
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 /// ES POSIBLE BUILDEAR LA APP EN RAILWAY SIN DOCKER FILE. SOLO JAVA 17.
@@ -10,8 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /// si queremos testear algo, usemos este codigo y modifiquemoslo:
 ///
-///     @Bean
-///     public CommandLineRunner commandLineRunner() {
+/// @Bean public CommandLineRunner commandLineRunner() {
 ///
 /// 		metodo();
 /// 		return null;
@@ -23,5 +25,4 @@ public class ArCashApplication {
     public static void main(String[] args) {
         SpringApplication.run(ArCashApplication.class, args);
     }
-
 }

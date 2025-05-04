@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CredentialsService {
 
-    private PasswordEncoder passwordEncoder;
+
     private final CredentialRepository credentialRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public CredentialsService(CredentialRepository credentialRepository, PasswordEncoder passwordEncoder) {
         this.credentialRepository = credentialRepository;
@@ -20,7 +21,9 @@ public class CredentialsService {
     public Credentials createCredentials(User user){
         Credentials credentials = new Credentials();
         credentials.setUsername(generateUniqueNickname(user));
-        String passEncoded = passwordEncoder.encode(user.getDni());
+        String userPass = user.getDni();
+        String passEncoded = passwordEncoder.encode(userPass);
+        System.out.println("PASS: " + passEncoded);
         credentials.setPass(passEncoded);
         credentials.setUser(user);
         credentials.setPermissions("USER");
