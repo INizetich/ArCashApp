@@ -84,28 +84,4 @@ document.addEventListener('DOMContentLoaded', () => {
         respuesta.style.color = color;
     }
 
-    // ==== CAMBIO DE TEMA ====
-    const inicializarTema = () => {
-        const themeSwitcher = document.getElementById('theme-switcher');
-        const html = document.documentElement;
-        
-        const savedTheme = localStorage.getItem('nv-theme');
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-            html.setAttribute('data-theme', 'dark');
-        } else {
-            html.removeAttribute('data-theme');
-        }
-
-        if (themeSwitcher) {
-            themeSwitcher.addEventListener('click', () => {
-                const isDark = html.getAttribute('data-theme') === 'dark';
-                html.setAttribute('data-theme', isDark ? '' : 'dark');
-                localStorage.setItem('nv-theme', isDark ? 'light' : 'dark');
-            });
-        }
-    };
-
-    inicializarTema();
 });
