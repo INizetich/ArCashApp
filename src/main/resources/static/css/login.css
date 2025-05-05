@@ -1,0 +1,133 @@
+:root {
+    --negro: #0A0A0A;
+    --gris-oscuro: #1E1E1E;
+    --gris-claro: #E8E8E8;
+    --blanco: #F3F3F3;
+    --azul-oscuro: #16263E;
+    --azul: #2A4D7A;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--negro);
+    color: var(--blanco);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    height: 600px;
+    background-color: var(--gris-oscuro);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Lado izquierdo - Logo */
+.logo {
+    flex: 1;
+    background-color: var(--azul-oscuro);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo h1 {
+    font-size: 38px;
+    color: var(--blanco);
+    margin-top: 20px;
+}
+
+.logo h1 span {
+    color: var(--azul);
+}
+
+/* SVG */
+.brand-mark {
+    width: 100px;
+    height: 100px;
+}
+.vault-shape {
+    fill: var(--azul);
+}
+.security-core {
+    fill: var(--blanco);
+}
+.access-cross {
+    stroke: var(--gris-claro);
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Lado derecho - Formulario */
+.formulario {
+    flex: 1;
+    background-color: var(--gris-oscuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+form {
+    width: 100%;
+    max-width: 350px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--gris-claro);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--gris-claro);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 5px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--azul);
+    color: var(--blanco);
+    margin-bottom: 25px;
+    outline: none;
+}
+
+/* Botón */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--gris-oscuro);
+    border: 1px solid var(--azul);
+}

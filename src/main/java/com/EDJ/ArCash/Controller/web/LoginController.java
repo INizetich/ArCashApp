@@ -1,12 +1,19 @@
 package com.EDJ.ArCash.Controller.web;
 
+
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+
 
 @Controller
 public class LoginController {
-    @PostMapping("/login")
-    public String login(){
-        return "login";
+
+
+
+    @GetMapping("/PreLogin")
+    public String loginPage() {
+        return "login"; // nombre del HTML (login.html)
     }
 }
