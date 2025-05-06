@@ -1,46 +1,165 @@
 :root {
-    /* Paleta ejecutiva */
-    --obsidian: #0A0A0A;
-    --carbon: #1E1E1E;
-    --titanium: #E8E8E8;
-    --platinum: #F3F3F3;
-    --naval: #16263E;
-    --cobalt: #2A4D7A;
-
-    /* Modo claro */
-    --bg-primary: var(--platinum);
-    --bg-secondary: white;
-    --text-primary: var(--obsidian);
-    --text-accent: var(--naval);
-    --border-light: rgba(0, 0, 0, 0.08);
+    --bg-body: #ffffff;
+    --bg-form: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #636363;
+    --accent-color: #2A4D7A;
+    --accent-hover-color: #444444;
 }
 
 [data-theme="dark"] {
-    --bg-primary: var(--carbon);
-    --bg-secondary: var(--obsidian);
-    --text-primary: var(--titanium);
-    --text-accent: var(--cobalt);
-    --border-light: rgba(255, 255, 255, 0.08);
+    --bg-body: #1e1e1e;
+    --bg-form: #1f1f1f;
+    --text-primary: #ffffff;
+    --text-secondary: #b1b0b0;
+    --border-color: #636363;
+    --accent-color: #2A4D7A;
+    --accent-hover-color: #636363;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transiciones más rápidas */
 }
 
-/* Reset general */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: 'Manrope', sans-serif;
-    background-color: var(--bg-primary);
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
     color: var(--text-primary);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    transition: background 0.4s ease;
-    padding: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones más rápidas */
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: space-between; /* Coloca los paneles a los lados */
+    transition: background-color 0.3s ease; /* Transición rápida para el contenedor */
+}
+
+/* Panel izquierdo (logo) */
+.left-panel {
+    flex: 1;
+    background-color: var(--bg-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    transition: background-color 0.3s ease; /* Asegurar transición rápida */
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-family: 'Unna', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.logo h1 span {
+    color: var(--accent-color);
+}
+
+.logo h4 {
+    font-family:'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    transition: color 0.3s ease;
+}
+
+/* Panel derecho (formulario) - Sin degradado */
+.right-panel {
+    flex: 1;
+    background-color: var(--bg-body); /* Fondo igual al panel izquierdo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease; /* Asegurar transición rápida */
+}
+
+.formulario {
+    background-color: var(--bg-form);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 420px;
+    transition: background-color 0.3s ease;
+}
+
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 28px;
+    transition: color 0.3s ease;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+/* Estilo de inputs */
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 0;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 18px;
+    outline: none;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: var(--accent-color);
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--accent-hover-color);
 }
 
 /* Control de tema */
@@ -84,60 +203,31 @@ body {
     opacity: 0.4;
 }
 
-/* Estilos del formulario */
-form#formulario {
-    background-color: var(--bg-secondary);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-light);
+.global-footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
-    max-width: 400px;
+    text-align: center;
+    padding: 10px 0;
+    background-color: var(--bg-body);
+    color: var(--text-secondary); /* ← se adapta al tema */
+    font-size: 14px;
+    transition: color 0.3s ease;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-form#formulario label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text-primary);
+.global-footer a {
+    color: var(--text-secondary); /* ← también usa la misma variable */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-form#formulario input {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: border-color 0.3s ease;
-}
-
-form#formulario input:focus {
-    border-color: var(--text-accent);
-    outline: none;
-}
-
-form#formulario button[type="submit"] {
-    padding: 1rem;
-    background-color: var(--text-accent);
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-form#formulario button[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-#respuesta {
-    font-size: 0.8rem;
-    margin-top: 1rem;
-    white-space: pre-wrap;
+.global-footer a:hover {
+    text-decoration: underline;
 }

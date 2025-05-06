@@ -191,6 +191,8 @@ body {
     border: 1px solid var(--border-light);
 }
 
+
+
 .access-btn.secondary:hover {
     border-color: var(--text-accent);
 }

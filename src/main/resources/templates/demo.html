@@ -41,8 +41,12 @@
             </svg>
         </button>
 
-        <a th:href="@{/register}" class="access-btn secondary">Sign-up</a>
-        <a th:href="@{/recover}" class="access-link">Recuperar credenciales</a>
+        <button onclick="location.href='/register'" class="access-btn secondary">
+            <span>Sign in</span>
+        </button>
+
+
+       <a th:href="@{/error}" class="access-link">Recover Credentials</a>
     </div>
 
     <div class="global-footer">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,34 +8,53 @@
   <title>Login-ArCash</title>
 </head>
 <body>
-<div class="main">
-  <div class="logo">
-    <svg class="brand-mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M60 20 L100 40 V80 L60 100 L20 80 V40 Z" class="vault-shape"/>
-      <circle cx="60" cy="60" r="18" class="security-core"/>
-      <path d="M60 42 L60 78 M48 60 L72 60" class="access-cross"/>
+
+<div class="theme-control">
+  <button id="theme-switcher">
+    <svg width="22" height="22" viewBox="0 0 24 24">
+      <path class="sun" d="M12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0-2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z"/>
+      <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
     </svg>
-    <h1><span>Ar</span> Cash</h1>
-  </div>
-  <div class="formulario">
-    <form id="login" method="post" th:action="@{/api/auth/login}">
-      <h2>Iniciar Sesion</h2>
+  </button>
+</div>
 
-      <div class="login-formulario">
-        <label id="Usuario">Usuario</label>
 
-        <input type="text" name="username" required>
 
-        <label id="Password"> Password</label>
+  <div class="main">
+        <div class="left-panel">
+              <div class="logo">
+                    <svg class="brand-mark" width="140" height="140" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M60 20 L100 40 V80 L60 100 L20 80 V40 Z" fill="none" stroke="#2A4D7A" stroke-width="4"/>/>
+                          <circle cx="60" cy="60" r="18" fill="none" stroke="#2A4D7A" stroke-width="4"/>
+                          <path d="M60 42 L60 78 M48 60 L72 60" stroke="#2A4D7A" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    <h1>AR<span>Cash</span></h1>
+                    <h4>VIRTUAL WALLET</h4>
+              </div>
+        </div>
 
-        <input type="password" name="password" required>
+
+        <div class="right-panel">
+            <div class="formulario">
+                <h2>Iniciar Sesion</h2>
+                <form id="login" method="post" th:action="@{/api/auth/login}">
+                    <label id="Usuario">Username</label>
+                    <input type="text" name="username" required>
+
+                    <label id="Password"> Password</label>
+                    <input type="password" name="password" required>
+
+                    <button type="submit">Iniciar Sesion</button>
+                </form>
+            </div>
+        </div>
+
+      <div class="global-footer">
+          <p>ArCash™ | Virtual Wallet <a href="mailto:helparcash2025@gmail.com" class="email-link">helparcash2025@gmail.com</a></p>
       </div>
 
-      <button type="submit">Iniciar Sesion</button>
-    </form>
   </div>
-</div>
-<script th:src="@{/js/login.js}"></script>
-<script th:src="@{/js/theme.js}"></script>
+  <script th:src="@{/js/login.js}"></script>
+  <script th:src="@{/js/theme.js}"></script>
 </body>
 </html>

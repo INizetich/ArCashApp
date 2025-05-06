@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
         html.setAttribute('data-theme', 'dark');
+    } else {
+        html.setAttribute('data-theme', 'light');
     }
 
     // Cambiar tema si hay botón
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isDark = html.getAttribute('data-theme') === 'dark';
 
             if (isDark) {
-                html.removeAttribute('data-theme');
+                html.setAttribute('data-theme', 'light');
                 localStorage.setItem('nv-theme', 'light');
             } else {
                 html.setAttribute('data-theme', 'dark');
@@ -25,7 +27,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
-
-
