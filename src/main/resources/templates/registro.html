@@ -30,7 +30,7 @@
         <div class="right-panel">
             <div class="formulario">
                 <h2>Registrarse</h2>
-                <form id="Register" method="post">
+                <form id="Register" method="post" th:action="@{/create}">
                     <label>Nombre</label>
                     <input type="text" name="nombre" required>
 
@@ -38,10 +38,10 @@
                     <input type="text" name="apellido" required>
 
                     <label>D.N.I</label>
-                    <input type="text" name="dni" required pattern="{8}">
+                    <input type="text" name="dni" required >
 
                     <label>Email</label>
-                    <input type="email" name="email" required pattern>
+                    <input type="email" name="email" required>
 
                     <label>Nombre de usuario</label>
                     <input type="text" name="alias" required>

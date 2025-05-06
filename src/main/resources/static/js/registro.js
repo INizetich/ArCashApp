@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ==== FORMULARIO ====
-    const formulario = document.getElementById('formulario');
+    const formulario = document.getElementById('Register');
     const respuesta = document.getElementById('respuesta');
     const MAX_LENGTH = 50;
 
@@ -62,13 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
 
-            if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.message || 'Error en el servidor');
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(data.mensaje || 'Error en el servidor');
             }
 
-            mostrarMensaje('Usuario registrado correctamente', 'green');
+            mostrarMensaje(data.mensaje, 'green');
             formulario.reset();
+
         } catch (error) {
             mostrarMensaje(
                 error.message === 'Failed to fetch' 

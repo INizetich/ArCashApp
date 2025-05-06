@@ -27,6 +27,12 @@ public class CustomErrorController implements ErrorController {
     }
 
     private boolean isApiRequest(HttpServletRequest request) {
-        return request.getRequestURI().startsWith("/api/");
+        String uri = request.getRequestURI();
+        String contentType = request.getHeader("Content-Type");
+        String acceptHeader = request.getHeader("Accept");
+
+        return uri.startsWith("/api/")
+                || (contentType != null && contentType.contains("application/json"))
+                || (acceptHeader != null && acceptHeader.contains("application/json"));
     }
 }
