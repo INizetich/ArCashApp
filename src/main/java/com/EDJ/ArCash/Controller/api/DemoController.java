@@ -1,4 +1,4 @@
-package com.EDJ.ArCash.Controller;
+package com.EDJ.ArCash.Controller.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +10,5 @@ public class DemoController {
     public String home(){
         return "demo";
     }
-
-    @RequestMapping("/propuestas")
-    public String propuestas(){
-        return "logos";
-    }
-
 
 }

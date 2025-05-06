@@ -1,0 +1,276 @@
+:root {
+    --bg-body: #ffffff;
+    --bg-form: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #636363;
+    --accent-color: #2A4D7A;
+    --accent-hover-color: #444444;
+}
+
+[data-theme="dark"] {
+    --bg-body: #1e1e1e;
+    --bg-form: #1f1f1f;
+    --text-primary: #ffffff;
+    --text-secondary: #b1b0b0;
+    --border-color: #636363;
+    --accent-color: #2A4D7A;
+    --accent-hover-color: #636363;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transiciones más rápidas */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones más rápidas */
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: space-between; /* Coloca los paneles a los lados */
+    transition: background-color 0.3s ease; /* Transición rápida para el contenedor */
+}
+
+/* Panel izquierdo (logo) */
+.left-panel {
+    flex: 1;
+    background-color: var(--bg-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    transition: background-color 0.3s ease; /* Asegurar transición rápida */
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-family: 'Unna', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.logo h1 span {
+    color: var(--accent-color);
+}
+
+.logo h4 {
+    font-family:'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    transition: color 0.3s ease;
+}
+
+/* Panel derecho (formulario) - Sin degradado */
+.right-panel {
+    flex: 1;
+    background-color: var(--bg-body); /* Fondo igual al panel izquierdo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease; /* Asegurar transición rápida */
+}
+
+.formulario {
+    background-color: var(--bg-form);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 420px;
+    transition: background-color 0.3s ease;
+}
+
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 28px;
+    transition: color 0.3s ease;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+/* Estilo de inputs */
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 0;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 18px;
+    outline: none;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: var(--accent-color);
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--accent-hover-color);
+}
+
+/* Control de tema */
+.theme-control {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+}
+
+#theme-switcher {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+#theme-switcher svg {
+    width: 22px;
+    height: 22px;
+}
+
+.sun {
+    fill: var(--text-primary);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.sun-ray {
+    stroke: var(--text-primary);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#theme-switcher:hover .sun {
+    opacity: 1;
+}
+
+#theme-switcher:hover .sun-ray {
+    opacity: 0.4;
+}
+
+.global-footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: var(--bg-body);
+    color: var(--text-secondary); /* ← se adapta al tema */
+    font-size: 14px;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.global-footer a {
+    color: var(--text-secondary); /* ← también usa la misma variable */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.global-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px 10px;
+    }
+
+    .left-panel,
+    .right-panel {
+        flex: none;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    .logo h1 {
+        font-size: 36px;
+    }
+
+    .formulario {
+        padding: 30px 20px;
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .theme-control {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .global-footer {
+        position: static;
+        transform: none;
+        padding: 15px 0;
+        font-size: 13px;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

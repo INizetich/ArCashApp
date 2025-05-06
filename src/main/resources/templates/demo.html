@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NizaVault | Security Solutions</title>
+    <title>ArCash™ | Virtual Wallet</title>
     <link rel="stylesheet" th:href="@{/css/demo.css}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&family=Unna&display=swap" rel="stylesheet">
 </head>
@@ -34,17 +34,33 @@
     </div>
 
     <div class="access-interface">
-        <button class="access-btn primary">
+        <button onclick="location.href='/login'" class="access-btn primary">
             <span>Login</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke-width="2" stroke-linecap="round"/>
             </svg>
         </button>
-        <button class="access-btn secondary">Sign-up</button>
-        <a href="#" class="access-link">Recuperar credenciales</a>
+
+        <button onclick="location.href='/register'" class="access-btn secondary">
+            <span>Sign in</span>
+        </button>
+
+
+       <a th:href="@{/error}" class="access-link">Recover Credentials</a>
+    </div>
+
+    <div class="global-footer">
+        <p>ArCash™ | Virtual Wallet
+
+            <a href="https://github.com/ValeroTomas " target="_blank" class="autor-link">Tomás Valero</a> |
+            <a href="https://github.com/INizetich" target="_blank" class="autor-link">Ignacio Nizetich</a> |
+            <a href="https://github.com/Rufinofg2" target="_blank" class="autor-link">Rufino Figueroa</a> |
+            <a href="https://github.com/Arshichak" target="_blank" class="autor-link">Lautaro Arschak</a>
+        </p>
     </div>
 </main>
 
-<script th:src="@{/js/demo.js}"></script>
+<script th:src="@{/js/theme.js}"></script>
+
 </body>
 </html>
