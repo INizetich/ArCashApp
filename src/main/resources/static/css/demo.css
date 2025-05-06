@@ -154,8 +154,8 @@ body {
 .access-interface {
     background-color: var(--bg-secondary);
     border-radius: 12px;
-    padding: 2rem;
-    width: 320px;
+    padding: 1.2rem;
+    width: 300px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--border-light);
 }
@@ -176,7 +176,9 @@ body {
 
 .access-btn.primary {
     background-color: var(--text-accent);
+    text-align: center;
     color: white;
+    padding-left: 105px;
     border: none;
 }
 
@@ -187,6 +189,8 @@ body {
 
 .access-btn.secondary {
     background-color: transparent;
+    text-align: center;
+    padding-left: 100px;
     color: var(--text-primary);
     border: 1px solid var(--border-light);
 }
@@ -203,7 +207,8 @@ body {
     font-size: 0.8rem;
     color: var(--text-accent);
     text-decoration: none;
-    margin-top: 1rem;
+    margin-top: 0.7rem;
+    margin: 0 70px 0 70px;
     transition: color 0.2s;
 }
 
