@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ZohoController {
 
 
-    @GetMapping("/zohoverify")
+    @GetMapping("/zohoverify/verifyforzoho.html")
     public String verificarZoho(){
         return "verifyforzoho";
     }
