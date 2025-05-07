@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a ARCash</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Fondo claro para el resto de la página */
+        }
+        .contenido {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contenido img {
+            width: 200px;
+        }
+        h2 {
+            color: #ffffff;
+        }
+        h3 {
+            color: #b3b3b3;
+        }
+        h4 {
+            font-size: 0.8rem;
+            color: #b3b3b3;
+        }
+        .AR {
+            color: #ffffff;
+            font-family: 'Unna', serif;
+        }
+        .Cash {
+            color: #2A4D7A;
+            font-family: 'Unna', serif;
+        }
+    </style>
+</head>
+<body>
+<div class="contenido">
+    <h2>Bienvenido a <span class="AR">AR</span><span class="Cash">Cash</span>™, <span th:text="${username}">Usuario</span>!</h2>
+    <h3>Gracias por registrarte en la nueva billetera virtual argentina. <br>Tu cuenta se encuentra habilitada.</h3>
+    <h4>Si no has sido tú, ignora este mensaje.</h4>
+</div>
+</body>
+</html>
