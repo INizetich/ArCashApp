@@ -20,12 +20,8 @@ public class CredentialsService {
 
     public Credentials createCredentials(User user){
         Credentials credentials = new Credentials();
-
-        credentials.setUsername(user.getAlias());
-
-        String userPass = user.getDni();
-        String passEncoded = passwordEncoder.encode(userPass);
-        System.out.println("PASS: " + passEncoded);
+        credentials.setUsername(generateUniqueNickname(user));
+        String passEncoded = passwordEncoder.encode(user.getDni());
         credentials.setPass(passEncoded);
         credentials.setUser(user);
         credentials.setPermissions("USER");
@@ -33,5 +29,11 @@ public class CredentialsService {
     }
 
 
-
+    /// METODOS PRIVADOS PARA LA GENERACIÓN DE UN NICKNAME AUTOMATICO
+    private String generateUniqueNickname(User user) {
+        String nickname = user.getName().substring(0, 1).toUpperCase() +
+                user.getLastName().substring(0, 1).toUpperCase() +
+                user.getDni();
+        return nickname.length() > 25 ? nickname.substring(0, 25).toUpperCase() : nickname.toUpperCase();
+    }
 }
