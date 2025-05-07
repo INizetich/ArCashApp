@@ -16,7 +16,7 @@
     --border-color: #636363;
     --accent-color: #2A4D7A;
     --accent-hover-color: #636363;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transiciones más rápidas */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 * {
@@ -25,50 +25,72 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-body);
     color: var(--text-primary);
-    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones más rápidas */
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Contenedor principal */
-.container {
+/* Contenedor principal - Funciona con ambas clases */
+.container, .main {
     display: flex;
-    height: 100vh;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-between; /* Coloca los paneles a los lados */
-    transition: background-color 0.3s ease; /* Transición rápida para el contenedor */
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px;
 }
 
 /* Panel izquierdo (logo) */
 .left-panel {
-    flex: 1;
-    background-color: var(--bg-body);
+    width: 100%;
+    padding: 40px 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    transition: background-color 0.3s ease; /* Asegurar transición rápida */
+    background-color: var(--bg-body);
+    transition: background-color 0.3s ease;
 }
 
+/* Panel derecho (formulario) */
+.right-panel {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--bg-body);
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos del logo */
 .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    text-align: center;
+}
+
+.logo svg {
+    width: 100px;
+    height: 100px;
 }
 
 .logo h1 {
     font-family: 'Unna', serif;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: bold;
     color: var(--text-primary);
+    margin: 0;
     transition: color 0.3s ease;
 }
 
@@ -77,30 +99,19 @@ body {
 }
 
 .logo h4 {
-    font-family:'Manrope', sans-serif;
-    font-size: 1rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
     font-weight: 300;
     letter-spacing: 2px;
     color: var(--text-secondary);
-    opacity: 0.8;
+    margin: 0;
     transition: color 0.3s ease;
 }
 
-/* Panel derecho (formulario) - Sin degradado */
-.right-panel {
-    flex: 1;
-    background-color: var(--bg-body); /* Fondo igual al panel izquierdo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease; /* Asegurar transición rápida */
-}
-
+/* Formulario */
 .formulario {
     background-color: var(--bg-form);
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 30px 20px;
     width: 100%;
     max-width: 420px;
     transition: background-color 0.3s ease;
@@ -108,22 +119,21 @@ body {
 
 .formulario h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-weight: bold;
     color: var(--text-primary);
-    font-size: 28px;
+    font-size: 24px;
     transition: color 0.3s ease;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: var(--text-secondary);
-    font-size: 16px;
+    font-size: 15px;
     transition: color 0.3s ease;
 }
 
-/* Estilo de inputs */
 input[type="text"],
 input[type="email"] {
     width: 100%;
@@ -133,7 +143,7 @@ input[type="email"] {
     border: none;
     border-bottom: 2px solid var(--border-color);
     color: var(--text-primary);
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
     transition: border-color 0.3s ease, color 0.3s ease;
 }
@@ -143,11 +153,10 @@ input[type="email"]:focus {
     border-color: var(--accent-color);
 }
 
-/* Botón de envío */
 button[type="submit"] {
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 16px;
     font-weight: bold;
     border: none;
@@ -155,7 +164,7 @@ button[type="submit"] {
     background-color: var(--accent-color);
     color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
@@ -165,8 +174,9 @@ button[type="submit"]:hover {
 /* Control de tema */
 .theme-control {
     position: fixed;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
 }
 
 #theme-switcher {
@@ -203,26 +213,28 @@ button[type="submit"]:hover {
     opacity: 0.4;
 }
 
+/* Footer */
 .global-footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100%;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     background-color: var(--bg-body);
-    color: var(--text-secondary); /* ← se adapta al tema */
-    font-size: 14px;
-    transition: color 0.3s ease;
+    color: var(--text-secondary);
+    font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    z-index: 10;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    will-change: background-color, color; /* Optimización para el navegador */
 }
 
 .global-footer a {
-    color: var(--text-secondary); /* ← también usa la misma variable */
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
@@ -232,45 +244,49 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 20px 10px;
+/* Desktop (769px en adelante) */
+@media (min-width: 769px) {
+    .container, .main {
+        flex-direction: row;
+        height: 100vh;
+        justify-content: space-between;
+        padding-bottom: 0;
     }
 
-    .left-panel,
+    .left-panel {
+        height: 100%;
+        padding: 0;
+    }
+
     .right-panel {
-        flex: none;
-        width: 100%;
-        height: auto;
-        justify-content: center;
-        padding: 20px 0;
+        height: 100%;
+        align-items: center;
+    }
+
+    .logo svg {
+        width: 140px;
+        height: 140px;
     }
 
     .logo h1 {
-        font-size: 36px;
+        font-size: 48px;
+    }
+
+    .logo h4 {
+        font-size: 1rem;
     }
 
     .formulario {
-        padding: 30px 20px;
-        max-width: 100%;
-        box-shadow: none;
-        border-radius: 0;
-    }
-
-    .theme-control {
-        top: 1rem;
-        right: 1rem;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     .global-footer {
-        position: static;
-        transform: none;
-        padding: 15px 0;
-        font-size: 13px;
-        flex-direction: column;
-        gap: 5px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        gap: 10px;
     }
 }
