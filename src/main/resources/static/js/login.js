@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert('Inicio de sesión exitoso');
                     form.reset();
                     localStorage.setItem('authToken', data.token);
+                    console.log("Token recibido:", data.token);// Muestra la respuesta completa del backend
                 } else {
                     alert(data.message);
                 }
