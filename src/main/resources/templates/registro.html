@@ -1,11 +1,23 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" th:href="@{/css/registro.css}">
-    <title>Formulario</title>
+    <title>Registro</title>
 </head>
 <body>
-    <div class="container">
+
+<div class="theme-control">
+    <button id="theme-switcher">
+        <svg width="22" height="22" viewBox="0 0 24 24">
+            <path class="sun" d="M12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0-2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z"/>
+            <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
+        </svg>
+    </button>
+</div>
+
+    <div class="main">
         <div class="left-panel">
             <div class="logo">
                 <svg class="brand-mark" width="140" height="140" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
@@ -18,14 +30,6 @@
             </div>
         </div>
 
-        <div class="theme-control">
-            <button id="theme-switcher">
-                <svg width="22" height="22" viewBox="0 0 24 24">
-                    <path class="sun" d="M12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0-2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z"/>
-                    <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
-                </svg>
-            </button>
-        </div>
 
         <div class="right-panel">
             <div class="formulario">
@@ -38,7 +42,7 @@
                     <input type="text" name="apellido" required>
 
                     <label>D.N.I</label>
-                    <input type="text" name="dni" required >
+                    <input type="text" name="dni" required>
 
                     <label>Email</label>
                     <input type="email" name="email" required>
@@ -59,6 +63,6 @@
 
     </div>
     <script th:src="@{/js/registro.js}"></script>
-<script th:src="@{/js/theme.js}"></script>
+    <script th:src="@{/js/theme.js}"></script>
 </body>
 </html>
