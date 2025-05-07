@@ -21,9 +21,7 @@ public class CredentialsService {
     public Credentials createCredentials(User user){
         Credentials credentials = new Credentials();
         credentials.setUsername(generateUniqueNickname(user));
-        String userPass = user.getDni();
-        String passEncoded = passwordEncoder.encode(userPass);
-        System.out.println("PASS: " + passEncoded);
+        String passEncoded = passwordEncoder.encode(user.getDni());
         credentials.setPass(passEncoded);
         credentials.setUser(user);
         credentials.setPermissions("USER");
