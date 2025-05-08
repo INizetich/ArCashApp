@@ -1,13 +1,10 @@
 package com.EDJ.ArCash.Service;
 
 import com.EDJ.ArCash.Models.Account;
-import com.EDJ.ArCash.Models.Imp.AccountTypes;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.Random;
 
 @Service

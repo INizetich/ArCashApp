@@ -4,7 +4,6 @@ import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.UserRepository;
 import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Service;
-
 import java.io.UnsupportedEncodingException;
 
 @Service
@@ -34,13 +33,5 @@ public class UserService {
         accountService.createAccount(user, "PESOS");
         emailService.testEmail(user);
     }
-
-
-
-
-
-
-    /// -------------METODOS PRIVATE DE VERIFICACION DE CAMPOS EN USER-----------------
-
 
 }
