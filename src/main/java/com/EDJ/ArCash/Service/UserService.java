@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     private final AccountService accountService;
 

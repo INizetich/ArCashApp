@@ -8,9 +8,11 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -18,11 +20,14 @@ import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Collections;
 
+@Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    // Clave secreta (mínimo 32 caracteres alfanuméricos si se usa UTF-8)
-    private static final String SECRET = "YV9zZWNyZXRfa2V5X3dpdGhfbm8tX3VuZGVyc2NvcmVz";
-    private static final Key SECRET_KEY = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
+    private final Key secretKey;
+
+    public JwtAuthenticationFilter(@Value("${spring.jwt.secret}") String signedJwt) {
+        this.secretKey = Keys.hmacShaKeyFor(signedJwt.getBytes(StandardCharsets.UTF_8));
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -31,11 +36,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = request.getHeader("Authorization");
 
         if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7); // Eliminar el prefijo "Bearer "
+            token = token.substring(7);
             try {
 
                 JwtParserBuilder parserBuilder = Jwts.parser();
-                Claims claims = parserBuilder.setSigningKey(SECRET_KEY).build().parseClaimsJws(token).getBody();
+                Claims claims = parserBuilder.setSigningKey(secretKey).build().parseClaimsJws(token).getBody();
 
                 String username = claims.getSubject();
 

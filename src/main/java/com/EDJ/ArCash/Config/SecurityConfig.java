@@ -14,19 +14,25 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF si no lo necesitas
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/register", "/css/*", "/js/*",  "/create","/api/auth/login", "/error", "/zohoverify", "/zohoverify/*").permitAll() // Endpoints libres
+                        .requestMatchers("/", "/home", "/register", "/css/*", "/js/*", "/create", "/api/auth/login", "/error", "/zohoverify", "/zohoverify/*").permitAll() // Endpoints libres
                         .anyRequest().authenticated() // Los demás requieren login
                 )
                 .formLogin(form -> form
                         .loginPage("/PreLogin") // Tu endpoint de login personalizado (opcional)
                         .permitAll()
                 )
-                .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) // Añadir el filtro JWT antes del filtro de autenticación por defecto
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Usar el bean gestionado por Spring
                 .build();
     }
 
