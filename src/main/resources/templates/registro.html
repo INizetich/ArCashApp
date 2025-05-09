@@ -17,52 +17,52 @@
     </button>
 </div>
 
-    <div class="main">
-        <div class="left-panel">
-            <div class="logo">
-                <svg class="brand-mark" width="140" height="140" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M60 20 L100 40 V80 L60 100 L20 80 V40 Z" fill="none" stroke="#2A4D7A" stroke-width="4"/>/>
-                    <circle cx="60" cy="60" r="18" fill="none" stroke="#2A4D7A" stroke-width="4"/>
-                    <path d="M60 42 L60 78 M48 60 L72 60" stroke="#2A4D7A" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-                <h1>AR<span>Cash</span></h1>
-                <h4>VIRTUAL WALLET</h4>
-            </div>
+<div class="main">
+    <div class="left-panel">
+        <div class="logo">
+            <svg class="brand-mark" width="140" height="140" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 20 L100 40 V80 L60 100 L20 80 V40 Z" fill="none" stroke="#2A4D7A" stroke-width="4"/>/>
+                <circle cx="60" cy="60" r="18" fill="none" stroke="#2A4D7A" stroke-width="4"/>
+                <path d="M60 42 L60 78 M48 60 L72 60" stroke="#2A4D7A" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <h1>AR<span>Cash</span></h1>
+            <h4>VIRTUAL WALLET</h4>
         </div>
-
-
-        <div class="right-panel">
-            <div class="formulario">
-                <h2>Registrarse</h2>
-                <form id="Register" method="post" th:action="@{/create}">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" required>
-
-                    <label>Apellido</label>
-                    <input type="text" name="apellido" required>
-
-                    <label>D.N.I</label>
-                    <input type="text" name="dni" required>
-
-                    <label>Email</label>
-                    <input type="email" name="email" required>
-
-                    <label>Nombre de usuario</label>
-                    <input type="text" name="alias" required>
-
-                    <button type="submit">Enviar</button>
-
-                    <pre id="respuesta"></pre>
-                </form>
-            </div>
-        </div>
-
-        <div class="global-footer">
-            <p>ArCash™ | Virtual Wallet <a href="mailto:helparcash2025@gmail.com" class="email-link">helparcash2025@gmail.com</a></p>
-        </div>
-
     </div>
-    <script th:src="@{/js/registro.js}"></script>
-    <script th:src="@{/js/theme.js}"></script>
+
+
+    <div class="right-panel">
+        <div class="formulario">
+            <h2>Registrarse</h2>
+            <form id="Register" method="post" th:action="@{/create}">
+                <label>Nombre</label>
+                <input type="text" name="nombre" required>
+
+                <label>Apellido</label>
+                <input type="text" name="apellido" required>
+
+                <label>D.N.I</label>
+                <input type="text" name="dni" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Nombre de usuario</label>
+                <input type="text" name="alias" required>
+
+                <button type="submit">Enviar</button>
+
+                <pre id="respuesta"></pre>
+            </form>
+        </div>
+    </div>
+
+    <div class="global-footer">
+        <p>ArCash™ | Virtual Wallet <a href="mailto:helparcash2025@gmail.com" class="email-link">helparcash2025@gmail.com</a></p>
+    </div>
+
+</div>
+<script th:src="@{/js/registro.js}"></script>
+<script th:src="@{/js/theme.js}"></script>
 </body>
 </html>

@@ -22,9 +22,10 @@ public class EmailService {
         this.templateEngine = templateEngine;
     }
 
-    public void testEmail(User user) throws MessagingException, UnsupportedEncodingException {
+    public void testEmail(User user, String token) throws MessagingException, UnsupportedEncodingException {
         Context context = new Context();
         context.setVariable("username", user.getName());
+        context.setVariable("token", token);
 
         String html = templateEngine.process("email", context);
 

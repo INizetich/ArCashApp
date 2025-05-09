@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 
 @RestController
+//@RequestMapping(produces = "application/json")
 public class UserController {
 
     @Autowired
@@ -25,6 +26,4 @@ public class UserController {
         userService.insertarUsuario(user);
         return ResponseEntity.ok(new RegisterResponse(true,"Usuario registrado correctamente"));
     }
-
-
 }

@@ -56,6 +56,12 @@ public class User {
     @Column(unique = true, name = "alias")
     private String alias;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private ValidationToken validationToken;
+
+    @Column(nullable = false, name = "enabled")
+    private boolean enabled;
+
     public User (String name,String lastName,String dni,String email,String alias){
         this.name = name;
         this.lastName = lastName;
