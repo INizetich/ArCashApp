@@ -41,7 +41,6 @@ public class AuthController {
 
                 if (passwordEncoder.matches(loginRequest.getPassword(), credentials.getPass())) {
                     String token = JwtUtils.generateToken(credentials.getUsername());
-                    System.out.println("Token generado para el usuario " + credentials.getUsername() + ": " + token);
                     return ResponseEntity.ok(new LoginResponse(true, "Login exitoso", token));
                 }
                 else {
