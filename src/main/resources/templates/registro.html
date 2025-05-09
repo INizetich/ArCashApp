@@ -42,19 +42,19 @@
                 <h2>Registrarse</h2>
                 <form id="Register" method="post" th:action="@{/create}">
                     <label>Nombre</label>
-                    <input type="text" name="nombre" required>
+                    <input type="text" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,}">
 
                     <label>Apellido</label>
-                    <input type="text" name="apellido" required>
+                    <input type="text" name="apellido" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,}">
 
                     <label>D.N.I</label>
-                    <input type="text" name="dni" required>
+                    <input type="text" name="dni" required maxlength="8" pattern="\d{8}">
 
                     <label>Email</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" required title="Ingrese un Email Valido">
 
                     <label>Nombre de usuario</label>
-                    <input type="text" name="alias" required>
+                    <input type="text" name="alias" required maxlength="10">
 
                     <button type="submit">Enviar</button>
 
