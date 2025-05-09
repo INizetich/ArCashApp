@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" th:href="@{/css/login.css}">
+  <link rel="stylesheet" th:href="@{/css/login-register.css}">
 
   <title>Login-ArCash</title>
 </head>
@@ -16,6 +16,14 @@
       <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
     </svg>
   </button>
+</div>
+<div>
+    <button id="back-button" onclick="window.history.back()" aria-label="Volver">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" class="back-circle"/>
+            <path d="M14 8L10 12L14 16" class="back-arrow" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
 </div>
 
 
@@ -33,7 +41,6 @@
               </div>
         </div>
 
-
         <div class="right-panel">
             <div class="formulario">
                 <h2>Iniciar Sesion</h2>
@@ -50,9 +57,8 @@
         </div>
 
       <div class="global-footer">
-          <p>ArCash™ | Virtual Wallet <a href="mailto:helparcash2025@gmail.com" class="email-link">helparcash2025@gmail.com</a></p>
+          <p>ArCash™ | Virtual Wallet <a href="ArCash:helparcash2025@gmail.com" class="email-link">helparcash2025@gmail.com</a></p>
       </div>
-
   </div>
   <script th:src="@{/js/login.js}"></script>
   <script th:src="@{/js/theme.js}"></script>

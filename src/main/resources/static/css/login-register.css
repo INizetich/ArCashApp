@@ -1,8 +1,8 @@
 :root {
-    --bg-body: #ffffff;
-    --bg-form: #ffffff;
+    --bg-body: rgba(218, 218, 218, 0.85);
+    --bg-form: #aeaeae;
     --text-primary: #000000;
-    --text-secondary: #333333;
+    --text-secondary: #000000;
     --border-color: #636363;
     --accent-color: #2A4D7A;
     --accent-hover-color: #444444;
@@ -16,13 +16,14 @@
     --border-color: #636363;
     --accent-color: #2A4D7A;
     --accent-hover-color: #636363;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 html, body {
@@ -30,112 +31,100 @@ html, body {
     overflow-x: hidden;
 }
 
-body {
+body{
     font-family: Arial, sans-serif;
     background-color: var(--bg-body);
     color: var(--text-primary);
-    display: flex;
-    flex-direction: column;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Contenedor principal - Funciona con ambas clases */
-.container, .main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 60px;
-}
-
-/* Panel izquierdo (logo) */
-.left-panel {
-    width: 100%;
-    padding: 40px 20px 20px;
+    height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-body);
-    transition: background-color 0.3s ease;
+    position: relative;
 }
 
-/* Panel derecho (formulario) */
-.right-panel {
+.main{
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    padding: 20px;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.left-panel{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    background-color: var(--bg-body);
-    transition: background-color 0.3s ease;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    text-align: center;
 }
 
-/* Estilos del logo */
-.logo {
+.right-panel{
+    height: 95%;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+}
+
+.logo{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    text-align: center;
 }
 
-.logo svg {
-    width: 100px;
-    height: 100px;
-}
-
-.logo h1 {
-    font-family: 'Unna', serif;
-    font-size: 36px;
-    font-weight: bold;
+.logo h1{
     color: var(--text-primary);
+    font-family: 'Unna', serif;
+    font-size: 48px;
+    font-weight: bold;
     margin: 0;
-    transition: color 0.3s ease;
 }
 
-.logo h1 span {
+.logo span{
     color: var(--accent-color);
 }
 
-.logo h4 {
+.logo h4{
+    color: var(--text-secondary);
     font-family: 'Manrope', sans-serif;
-    font-size: 0.9rem;
+    margin: 0;
+    font-size: 1rem;
     font-weight: 300;
     letter-spacing: 2px;
-    color: var(--text-secondary);
-    margin: 0;
-    transition: color 0.3s ease;
 }
 
-/* Formulario */
 .formulario {
     background-color: var(--bg-form);
-    padding: 30px 20px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 420px;
-    transition: background-color 0.3s ease;
+    border: 2px solid #4285f4;
+    position: relative;
 }
 
-.formulario h2 {
+.formulario h2{
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-weight: bold;
     color: var(--text-primary);
-    font-size: 24px;
-    transition: color 0.3s ease;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     color: var(--text-secondary);
-    font-size: 15px;
-    transition: color 0.3s ease;
+    font-size: 16px;
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 12px 0;
     margin-bottom: 20px;
@@ -143,39 +132,39 @@ input[type="email"] {
     border: none;
     border-bottom: 2px solid var(--border-color);
     color: var(--text-primary);
-    font-size: 16px;
+    font-size: 18px;
     outline: none;
-    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 input[type="text"]:focus,
-input[type="email"]:focus {
+input[type="email"],
+input[type="password"]:focus {
     border-color: var(--accent-color);
 }
+
 
 button[type="submit"] {
     width: 100%;
     padding: 12px;
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    background-color: var(--accent-color);
-    color: #ffffff;
     cursor: pointer;
+    background-color: #2A4D7A;
+    color: #ffffff;
     transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: var(--accent-hover-color);
+    background-color: #444444;
 }
 
-/* Control de tema */
 .theme-control {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    top: 2rem;
+    right: 2rem;
     z-index: 100;
 }
 
@@ -213,7 +202,6 @@ button[type="submit"]:hover {
     opacity: 0.4;
 }
 
-/* Footer */
 .global-footer {
     position: fixed;
     bottom: 0;
@@ -244,49 +232,89 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* Desktop (769px en adelante) */
-@media (min-width: 769px) {
-    .container, .main {
-        flex-direction: row;
-        height: 100vh;
-        justify-content: space-between;
-        padding-bottom: 0;
+@media (max-width: 768px) {
+    .main{
+        flex-direction: column;
+        text-align: center;
+        justify-content: flex-start;
+        padding: 20px 10px;
     }
 
-    .left-panel {
-        height: 100%;
-        padding: 0;
+    .left-panel, .right-panel{
+        flex: none;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        margin-bottom: 30px;
     }
 
-    .right-panel {
-        height: 100%;
-        align-items: center;
+    .logo h1{
+        font-size: 36px;
     }
 
-    .logo svg {
-        width: 140px;
-        height: 140px;
+    .formulario{
+        padding: 30px 20px;
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
     }
 
-    .logo h1 {
-        font-size: 48px;
-    }
-
-    .logo h4 {
-        font-size: 1rem;
-    }
-
-    .formulario {
-        padding: 50px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    .theme-control {
+        top: 1rem;
+        right: 1rem;
     }
 
     .global-footer {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 14px;
-        gap: 10px;
+        position: static;
+        padding: 15px 0;
+        font-size: 13px;
+        flex-direction: column;
+        gap: 5px;
     }
+}
+#back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#back-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#back-button svg {
+    width: 100%;
+    height: 100%;
+}
+
+.back-circle {
+    fill: #ffffff;
+    stroke: #dddddd;
+    stroke-width: 1;
+}
+
+.back-arrow {
+    stroke: #333333;
+}
+
+/* Tema oscuro */
+body.dark-mode .back-circle {
+    fill: #2a2a2a;
+    stroke: #444444;
+}
+
+body.dark-mode .back-arrow {
+    stroke: #ffffff;
 }

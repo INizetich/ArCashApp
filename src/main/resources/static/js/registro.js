@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (!/^\d{7,10}$/.test(campos.dni)) {
-            mostrarMensaje('El DNI debe tener entre 7 y 10 dígitos numéricos.', 'red');
+        if (!/^\d{8}$/.test(campos.dni)) {
+            mostrarMensaje('El DNI debe tener 8 dígitos numéricos.', 'red');
             return;
         }
 
