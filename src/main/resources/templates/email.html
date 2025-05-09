@@ -31,7 +31,7 @@
             color: #b3b3b3;
         }
         h4 {
-            font-size: 0.8rem;
+            font-size: 0.5rem;
             color: #b3b3b3;
         }
         .AR {
@@ -42,13 +42,29 @@
             color: #2A4D7A;
             font-family: 'Unna', serif;
         }
+        .boton {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2A4D7A;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .boton:hover {
+            background-color: #1d3657;
+        }
     </style>
+
 </head>
 <body>
 <div class="contenido">
     <h2>Bienvenido a <span class="AR">AR</span><span class="Cash">Cash</span>™, <span th:text="${username}">Usuario</span>!</h2>
     <h3>Gracias por registrarte en la nueva billetera virtual argentina. <br>Tu cuenta se encuentra habilitada.</h3>
-    <h4>Si no has sido tú, ignora este mensaje.</h4>
+    <a class="boton" th:href="@{https://arcash.ddns.net/validate(token=${token})}">VERIFICA TU CUENTA</a>
+    <h4><br>Si no has sido tú, ignora este mensaje.</h4>
 </div>
 </body>
 </html>
