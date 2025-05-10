@@ -3,6 +3,7 @@ package com.EDJ.ArCash.Controller.api;
 import com.EDJ.ArCash.DTO.LoginRequest;
 import com.EDJ.ArCash.DTO.LoginResponse;
 import com.EDJ.ArCash.Models.Credentials;
+import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.CredentialRepository;
 import com.EDJ.ArCash.Security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,13 @@ public class AuthController {
 
             if (credentialsOptional.isPresent()) {
                 Credentials credentials = credentialsOptional.get();
+                User usuario = credentials.getUser();
 
                 if (passwordEncoder.matches(loginRequest.getPassword(), credentials.getPass())) {
+                    if(!usuario.isEnabled()) {
+                        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                                .body(new LoginResponse(false, "Usuario no habilitado", null));
+                    }
                     String token = JwtUtils.generateToken(credentials.getUsername());
                     return ResponseEntity.ok(new LoginResponse(true, "Login exitoso", token));
                 }
