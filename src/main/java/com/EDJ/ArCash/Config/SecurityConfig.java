@@ -25,7 +25,7 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF si no lo necesitas
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/register", "/css/*",
+                        .requestMatchers("/", "/home", "/demo", "/register", "/css/*", "/img/*",
                                 "/js/*", "/create", "/api/impuestos/calculateARS", "/api/impuestos/calculateUSD",
                                 "/api/auth/login", "/error",
                                 "/validate","/forgot","/reset-password",

@@ -21,4 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         balanceVisible = !balanceVisible;
     });
+
+    //Funciones para abrir y cerrar modales.
+    function openModal(id) {
+        const modal = document.getElementById(id);
+        if (modal) modal.style.display = 'flex';
+    }
+
+    function closeModal(id) {
+        const modal = document.getElementById(id);
+        if (modal) modal.style.display = 'none';
+    }
 });
