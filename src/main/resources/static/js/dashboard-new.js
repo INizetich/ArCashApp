@@ -7,29 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let balanceVisible = true;
 
-    toggleModeBtn.addEventListener("click", () => {
+    toggleModeBtn?.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
     });
 
-    toggleVisibilityBtn.addEventListener("click", () => {
+    toggleVisibilityBtn?.addEventListener("click", () => {
         if (balanceVisible) {
             balanceElement.textContent = "$******";
             eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
         } else {
-            balanceElement.textContent = "$2.960,34"; // o obtener dinámicamente el valor
+            balanceElement.textContent = "$2.960,34"; // obtener dinámicamente si querés
             eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
         }
         balanceVisible = !balanceVisible;
     });
-
-    //Funciones para abrir y cerrar modales.
-    function openModal(id) {
-        const modal = document.getElementById(id);
-        if (modal) modal.style.display = 'flex';
-    }
-
-    function closeModal(id) {
-        const modal = document.getElementById(id);
-        if (modal) modal.style.display = 'none';
-    }
 });

@@ -1,0 +1,91 @@
+.modal-content {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: scale(0.97);
+}
+
+.modal-content.open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal-content.active {
+    display: flex;
+}
+
+.modal-background{
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ffffff;
+    z-index: 999;
+    color: #1a1a1a;
+}
+
+body.dark-mode .modal-background{
+    background-color: #1a1a1a;
+    color:#f4f4f4;
+}
+
+.modal-content > div {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    min-width: 320px;
+    max-width: 90vw;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #2A4D7A;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2A4D7A;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+}
+
+.action-button {
+    align-self: flex-end;
+    padding: 0.5rem 1.2rem;
+    background: #2A4D7A;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.action-button:hover {
+    background: #16263E;
+}

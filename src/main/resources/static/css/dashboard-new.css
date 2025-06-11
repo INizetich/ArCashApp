@@ -36,7 +36,8 @@ body.dark-mode .header {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espacio entre el logo y el h2 */
+    gap: 0.5rem;
+    text-shadow: 0 0 0.1rem rgb(42 77 122);
 }
 
 .header-right {
@@ -83,7 +84,6 @@ body.dark-mode .header {
     padding-top: 2rem;
     max-width: 80rem;
     margin: 0 auto;
-    --agregados--;
     display: flex;
     gap: 5rem;
     align-items: flex-start;
@@ -139,13 +139,13 @@ body.dark-mode .label {
     cursor: pointer;
     font-weight:bold;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra inicial */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .cvu-button:hover{
     background-color: #16263E;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra mÃ¡s grande */
-    transform: translateY(-0.1rem); /* Se eleva */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transform: translateY(-0.1rem);
 }
 
 .action-buttons {
@@ -164,13 +164,13 @@ body.dark-mode .label {
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra inicial */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .btn:hover{
     background-color: #16263E;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra mÃ¡s grande */
-    transform: translateY(-0.1rem); /* Se eleva */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transform: translateY(-0.1rem);
 }
 
 .btn.full {
@@ -183,14 +183,13 @@ body.dark-mode .label {
     height: 35rem;
     background-color: var(--card-bg);
     border-radius: 8px;
-    flex-direction: column; /* Para que el h2 quede fijo y la lista ocupe el resto */
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1); /* Sombra interna */
+    flex-direction: column;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     align-items:flex-end;
 }
 
 .movements-card {
-    --agregados--;
     background-color: #fff;
     border-radius: 12px;
     padding: 1.5rem;
@@ -202,19 +201,17 @@ body.dark-mode .movements-card {
 }
 
 .movements-list {
-    flex: 1; /* Ocupa todo el espacio restante */
+    flex: 1;
     padding-left: 1rem;
-    list-style: disc;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     margin: 0;
     overflow-y: auto;
-    list-style-position: inside; /* para que los bullets sean visibles */
+    list-style-position: inside;
     max-height: 40rem;
     min-height: 40rem;
-    padding-left: 20px; /* espacio para los bullets */
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1); /* Sombra interna */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .movements-list li {
@@ -228,7 +225,7 @@ body.dark-mode .movements-card {
     margin: 0;
     padding-bottom: 1rem;
     border-bottom: 1px solid #ccc;
-    flex-shrink: 0; /* Evita que el h2 se contraiga */
+    flex-shrink: 0;
 }
 
 body.dark-mode .movements-list li {
