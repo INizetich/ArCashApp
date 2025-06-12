@@ -37,12 +37,25 @@
     <div class="modal-content" id="modalperfil">
         <div class="modal-background">
             <button class="close-button" data-modal-id="modalperfil">&times;</button>
-            <h2>Modal 3 </h2>
-            <p>Este es el modal de perfil</p>
+            <h2>Informacion del usuario </h2>
             <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
             <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
             <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
             <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
+            <p>
+                <strong>nombre de usuario:</strong>
+                <span id="profile-username">Cargando...</span>
+                <button class="edit-btn" id="edit-username" title="Editar">
+                    <i class="fa fa-pencil"></i>
+                </button>
+            </p>
+            <p>
+                <strong>alias:</strong>
+                <span id="profile-accountNickname">Cargando...</span>
+                <button class="edit-btn" id="edit-alias" title="Editar">
+                    <i class="fa fa-pencil"></i>
+                </button>
+            </p>
             <section class="two-buttons">
             <button class="action-button logout-button" onclick="logout()">Log-out</button>
             </section>

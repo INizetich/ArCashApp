@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleVisibilityBtn = document.getElementById("toggle-visibility");
     const balanceElement = document.getElementById("balance");
     const eyeIcon = document.getElementById("eye-icon");
-
     const token = localStorage.getItem("JWT");
-    const refreshToken = localStorage.getItem("refreshToken");
 
     if (!token) {
         window.location.href = "/PreLogin";
@@ -166,10 +164,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    ///ESTA FUNCION CARGA EL MODAL DEL USUARIO AUTENTICADO
+   async function cargarPerfilUsuario() {
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        if (!userData) return;
+        document.getElementById("profile-name").textContent = userData.name || "";
+        document.getElementById("profile-lastName").textContent = userData.lastName || "";
+        document.getElementById("profile-email").textContent = userData.email || "";
+        document.getElementById("profile-dni").textContent = userData.dni || "";
+        document.getElementById("profile-username").textContent = userData.username || "";
+        document.getElementById("profile-accountNickname").textContent = userData.alias || "";
+    }
+
     async function init() {
         try {
             await loadUserData();
             await loadTransactions();
+            await cargarPerfilUsuario();
         } finally {
             document.getElementById("loader").style.display = "none";
         }
@@ -183,6 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleModeBtn?.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
     });
+
+
+
+
 
 
 });

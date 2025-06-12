@@ -95,6 +95,30 @@ body.dark-mode .modal-background{
     gap: 10rem;
 }
 
+/*PONE EL BOTON DE LOGOUT DEL LADO DERECHO DEL MODAL*/
+.two-buttons .logout-button{
+    margin-left: 15rem;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+
+    margin-left: 1rem;
+    cursor: pointer;
+    color: #2A4D7A;
+    font-size: 1rem;
+    vertical-align: middle;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    transform: translateY(-2px);
+
+}
+.edit-btn:hover {
+    color: #16263E;
+}
+
 .logout-button{
     background-color: darkred !important;
 }

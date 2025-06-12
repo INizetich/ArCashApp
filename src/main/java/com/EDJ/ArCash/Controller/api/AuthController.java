@@ -280,7 +280,7 @@ public class AuthController {
         }
     }
 
-    // En AuthController.java
+
     @PostMapping("/api/auth/refresh")
     public ResponseEntity<?> refreshAccessToken(@RequestBody Map<String, String> body) {
         String refreshToken = body.get("refreshToken");
