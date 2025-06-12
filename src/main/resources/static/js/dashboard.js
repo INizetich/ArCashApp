@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 welcomeSpan.textContent = nombre;
             }
         }
-        balanceElement.textContent = "$"+balance;
+        balanceElement.textContent = "$" + balance;
         toggleVisibilityBtn?.addEventListener("click", () => {
             if (balanceVisible) {
                 balanceElement.textContent = "$******";
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     ///ESTA FUNCION CARGA EL MODAL DEL USUARIO AUTENTICADO
-   async function cargarPerfilUsuario() {
+    async function cargarPerfilUsuario() {
         const userData = JSON.parse(localStorage.getItem("userData"));
         if (!userData) return;
         document.getElementById("profile-name").textContent = userData.name || "";
@@ -196,8 +196,78 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    ///FUNCIONES PARA EDICION DE ALIAS O NOMBRE DE USUARIO
+    function enableInlineEdit(spanId, btnId, field) {
+        const span = document.getElementById(spanId);
+        const btn = document.getElementById(btnId);
 
+        btn.addEventListener("click", () => {
+            const currentValue = span.textContent;
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = currentValue;
+            input.className = "edit-invisible-input";
+            span.replaceWith(input);
+            input.focus();
 
+            async function saveEdit() {
+                const newValue = input.value.trim();
+                if (!newValue || newValue === currentValue) {
+                    input.replaceWith(span);
+                    return;
+                }
+                const token = localStorage.getItem("JWT");
+                let success = false;
+                let result = {};
 
+                if (field === "username") {
+                    const res = await fetch("/api/auth/changeUsername", {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + token
+                        },
+                        body: JSON.stringify({newUsername: newValue})
+                    });
+                    result = await res.json();
+                    success = res.ok && result.success;
+                } else if (field === "alias") {
+                    const userData = JSON.parse(localStorage.getItem("userData"));
+                    const accountId = userData.idAccount;
+                    const res = await fetch(`/api/accounts/${accountId}/changeAlias`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + token
+                        },
+                        body: JSON.stringify({newAlias: newValue})
+                    });
+                    result = await res.json();
+                    success = res.ok && result.success;
+                }
+
+                if (success) {
+                    span.textContent = newValue;
+                    input.replaceWith(span);
+                    const userData = JSON.parse(localStorage.getItem("userData"));
+                    if (field === "username") userData.username = newValue;
+                    if (field === "alias") userData.alias = newValue;
+                    localStorage.setItem("userData", JSON.stringify(userData));
+                } else {
+                    input.replaceWith(span);
+                    alert(result.message || "No se pudo actualizar. Intenta con otro valor.");
+                }
+            }
+
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") saveEdit();
+                if (e.key === "Escape") input.replaceWith(span);
+            });
+            input.addEventListener("blur", () => input.replaceWith(span));
+        });
+    }
+
+    enableInlineEdit("profile-username", "edit-username", "username");
+    enableInlineEdit("profile-accountNickname", "edit-alias", "alias");
 
 });

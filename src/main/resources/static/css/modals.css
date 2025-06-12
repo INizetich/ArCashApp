@@ -119,6 +119,20 @@ body.dark-mode .modal-background{
     color: #16263E;
 }
 
+
+/*CLASE INVISIBLE PARA EL INPUT DE EDICION DE ALIAS O NOMBRE DE USUARIO*/
+.edit-invisible-input {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    outline: none;
+    width: 140px;
+    padding: 0;
+    margin: 0;
+}
+
 .logout-button{
     background-color: darkred !important;
 }
