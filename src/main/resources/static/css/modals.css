@@ -89,3 +89,16 @@ body.dark-mode .modal-background{
 .action-button:hover {
     background: #16263E;
 }
+
+.two-buttons{
+    display: flex;
+    gap: 10rem;
+}
+
+.logout-button{
+    background-color: darkred !important;
+}
+
+.logout-button:hover{
+    background-color: #b50000 !important;
+}

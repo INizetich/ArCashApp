@@ -58,7 +58,7 @@ body.dark-mode .header {
 
 .icon-button:hover{
     transition: all 0.3s ease;
-    filter: brightness(65%);
+    filter: opacity(60%);
 }
 
 .profile-button {

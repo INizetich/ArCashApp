@@ -5,6 +5,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const balanceElement = document.getElementById("balance");
     const eyeIcon = document.getElementById("eye-icon");
 
+    // COMIENZA LA LOGICA DE VALIDACIÓN DEL TOKEN
+    const token = localStorage.getItem("JWT");
+
+    if (!token) {
+        window.location.href = "/PreLogin";
+        return;
+    }
+
+    fetch("/api/user/data", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
+        .then(async response => {
+            if (!response.ok) {
+                localStorage.removeItem("JWT");
+                window.location.href = "/PreLogin";
+                return;
+            }
+
+            const data = await response.json();
+            // Guardar la data en localStorage y la llamamos a necesidad.
+            localStorage.setItem("userData", JSON.stringify(data));
+        })
+        .catch(err => {
+            console.error("Error al validar token:", err);
+            localStorage.removeItem("JWT");
+            window.location.href = "/PreLogin";
+        });
+
+    // FINALIZA LA LOGICA DE VALIDACIÓN DEL TOKEN
+
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const nombre = userData.name;
+
+    if(userData){
+        const welcomeSpan = document.querySelector(".welcome span");
+        if(welcomeSpan){
+            welcomeSpan.textContent = nombre;
+        }
+    }
+
     let balanceVisible = true;
 
     toggleModeBtn?.addEventListener("click", () => {

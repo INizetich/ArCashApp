@@ -100,6 +100,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 !uri.equals("/PreLogin") &&
                 !uri.startsWith("/css/") &&
                 !uri.startsWith("/js/") &&
+                !uri.startsWith("/img/") &&
+                !uri.startsWith("/sfx/") &&
                 !uri.startsWith("/api/auth/") &&
                 !uri.startsWith("/api/user/create") &&
                 !uri.startsWith("/api/impuestos/") &&
@@ -113,6 +115,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 !uri.startsWith("/swagger-ui/") &&
                 !uri.startsWith("/v3/api-docs/") &&
                 !uri.startsWith("/dashboard") &&
+                !uri.equals("/demo") &&
                 !uri.startsWith("/adminDashboard");
 
     }
