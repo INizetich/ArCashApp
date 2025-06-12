@@ -3,7 +3,7 @@
   <g transform="translate(100,100)">
     <polygon points="0,-40 40,-20 40,20 0,40 -40,20 -40,-20" fill="none" stroke="#2a4d7a" stroke-width="5"></polygon>
     <circle cx="0" cy="0" r="14" stroke="#2a4d7a" stroke-width="5" fill="none"></circle>
-    <line x1="-9" y1="0" x2="9" y2="0" stroke="#2a4d7a" stroke-width="3"></line>
-    <line x1="0" y1="-12" x2="0" y2="12" stroke="#2a4d7a" stroke-width="3"></line>
+    <line x1="-9" y1="0" x2="9" y2="0" stroke="#2a4d7a" stroke-width="5"></line>
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#2a4d7a" stroke-width="5"></line>
   </g>
 </svg>
