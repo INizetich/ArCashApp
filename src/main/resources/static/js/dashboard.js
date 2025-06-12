@@ -7,8 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let balanceVisible = true;
 
+    //--- guarda el tema al recargar la pagina ---//
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        body.classList.add("dark-mode");
+    }
+
     toggleModeBtn?.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
+        const isDark = body.classList.toggle("dark-mode");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
     });
 
     toggleVisibilityBtn?.addEventListener("click", () => {
@@ -22,3 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
         balanceVisible = !balanceVisible;
     });
 });
+
+function toggleTheme() {
+    const body = document.body;
+    const isDark = body.classList.toggle("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+}
