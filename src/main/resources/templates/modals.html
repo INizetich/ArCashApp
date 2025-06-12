@@ -1,13 +1,52 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modal</title>
     <link rel="stylesheet" th:href ="@{/css/color-palet.css}">
     <link rel="stylesheet" th:href ="@{/css/modals.css}">
+    <script th:src="@{/js/dashboard.js}"></script>
+    <script th:src="@{/js/modals.js}"></script>
 </head>
 <body>
+
+<div th:fragment="modal1">
+    <div class="modal-content" id="modal1">
+        <div class="modal-background">
+        <button class="close-button" data-modal-id="modal1">&times;</button>
+        <h2>Modal 1</h2>
+        <p>Este es el modal 1</p>
+        <button class="action-button">Action</button>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="modal2">
+    <div class="modal-content" id="modal2">
+        <div class="modal-background">
+            <button class="close-button" data-modal-id="modal2">&times;</button>
+            <h2>Modal 2</h2>
+            <p>Este es el modal 2</p>
+            <button class="action-button">Action</button>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="modalperfil">
+    <div class="modal-content" id="modalperfil">
+        <div class="modal-background">
+            <button class="close-button" data-modal-id="modalperfil">&times;</button>
+            <h2>Modal 3 </h2>
+            <p>Este es el modal de perfil</p>
+            <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
+            <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
+            <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
+            <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
+            <button class="action-button">Action</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

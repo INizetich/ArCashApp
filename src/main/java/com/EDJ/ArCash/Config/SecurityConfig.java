@@ -23,31 +23,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF si no lo necesitas
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/api/admin/**"
-                        ).hasAuthority("ROLE_ADMIN")
-                        .requestMatchers(
-                                "/", "/home", "/register", "/css/*",
-                                "/js/*", "/api/user/create", "/api/impuestos/calculateARS", "/api/impuestos/calculateUSD",
+                        .requestMatchers("/", "/home", "/demo", "/register", "/css/*", "/img/*",
+                                "/js/*", "/create", "/api/impuestos/calculateARS", "/api/impuestos/calculateUSD",
                                 "/api/auth/login", "/error",
                                 "/validate","/forgot","/reset-password",
                                 "/api/auth/send-recover-mail", "/validate-request" ,
                                 "/api/auth/changeUsername",
                                 "/dashboard","/api/user/data",
-                                "/api/transactions/{id}/getTransactions", "/swagger-ui.html",
-                                "/swagger-ui/**",
-                                "/v3/api-docs/**",
-                                "/adminDashboard"
-                        ).permitAll()
-                        .anyRequest().authenticated()
+                                "/api/transactions/{id}/getTransactions", "/swagger-ui.html").permitAll() // Endpoints libres
+                        .anyRequest().authenticated()/// Los demás requieren login
                 )
                 .formLogin(form -> form
-                        .loginPage("/PreLogin")
+                        .loginPage("/PreLogin") // Tu endpoint de login personalizado (opcional)
                         .permitAll()
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Usar el bean gestionado por Spring
                 .build();
     }
 

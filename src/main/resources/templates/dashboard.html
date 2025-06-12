@@ -1,264 +1,67 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org"  lang="es">
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="icon" th:href="@{/img/logo.png}" type="image/png">
+    <link rel="icon" th:href="@{/img/logo.svg}" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css}">
-    <link rel="stylesheet" th:href="@{css/color-palet.css}">
-    <link rel="stylesheet" th:href="@{css/dashboard.css}">
-    <link rel="stylesheet" th:href="@{/css/toast.css}">
-    <!-- Montserrat -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap">
-    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ArCash</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/modals.css}">
+    <script defer th:src="@{/js/dashboard.js}"></script>
+    <script defer th:src="@{/js/modals.js}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
-<header class="app-header">
-    <button id="menu-toggle" class="menu-button" aria-label="Abrir menú">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 6h18M3 12h18M3 18h18" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-    </button>
-    <div class="theme-control">
-        <button id="theme-switcher">
-            <svg width="22" height="22" viewBox="0 0 24 24">
-                <path class="sun" d="M12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0-2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z"/>
-                <path class="sun-ray" d="M12 2v2m0 16v2M4 12H2m20 0h-2m3-7l-2 2m-13 13l-2 2m17-15l2 2M3 19l2 2"/>
-            </svg>
+<body class="light-mode">
+<header class="header">
+    <div class="header-left">
+        <img src="/img/logo.svg" alt="Logo ArCash" class="logo">
+        <h2>Ar<span class="arc">Cash</span></h2>
+    </div>
+    <div class="header-right">
+        <button id="toggle-mode" class="icon-button" title="Cambiar modo">
+            <i class="fa-regular fa-lightbulb"></i>
+        </button>
+        <button class="profile-button" onclick="openModal('modalperfil')">
+            <i class="fa-solid fa-user"></i>
+            <span class="welcome">Hola, <span th:text="${nombre}">Usuario</span></span>
         </button>
     </div>
-    <h1 class="app-title">ARCash</h1>
 </header>
 
-<nav id="sidebar" class="sidebar hidden">
-    <ul>
-        <li><a href="#" id="abrir-calculadora">Calculadora Impuestos</a></li>
-        <li id="admin-panel-link" style="display:none;">
-            <a href="/adminDashboard" id="sidebar-admin-link">Panel Admin</a>
-        </li>
-    </ul>
-
-
-    <!-- CONTENEDOR DEL USUARIO -->
-    <div class="user-menu-container">
-        <div class="profile-photo" tabindex="0">
-            <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="12" fill="#ccc"/>
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                      fill="#666"/>
-            </svg>
-        </div>
-        <div class="user-name" id="user-name-topbar">Cargando...</div>
-        <div class="dropdown-menu" id="profileMenu">
-            <a href="#" id="open-profile-modal">Mi Perfil</a>
-            <a href="/logout">Salir</a>
-        </div>
-
-
-        <div id="profile-modal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close-button close-profile">&times;</span>
-                <h2>Perfil de Usuario</h2>
-                <div class="profile-details">
-                    <div class="profile-photo" tabindex="0">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="12" fill="#ccc"/>
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                                  fill="#666"/>
-                        </svg>
-                    </div>
-                    <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
-                    <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
-                    <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
-                    <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
-                    <p>
-                        <strong>Nombre de usuario:</strong>
-                        <span id="profile-username-display" style="display: inline-flex; align-items: center;">cargando...</span>
-                        <button id="edit-username-btn" title="Editar nombre de usuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        <input type="text" id="profile-username-input" class="hidden" maxlength="25"/>
-                    </p>
-                    <p>
-                        <strong>Alias:</strong>
-                        <span id="profile-alias-display"
-                              style="display: inline-flex; align-items: center;">cargando...</span>
-                        <button id="edit-alias-btn" title="Editar alias">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        <input type="text" id="profile-alias-input" class="hidden" maxlength="25"/>
-                    </p>
-                    <p><strong>Cvu:</strong> <span id="profile-cvu">Cargando...</span></p>
-                </div>
-            </div>
-        </div>
-        </div>
-</nav>
-
-<main class="dashboard">
-    <div class="dashboard-name">
-        <h2>Bienvenido, <span id="user-name">Cargando...</span></h2>
-    </div>
-    <div class="dashboard-button-container">
-        <h3>Saldo Actual</h3>
-        <h3>
-            <p class="saldo-actual">$<span id="balance">0.00</span></p>
-        </h3>
-        <div class="button-row">
-            <!-- BOTÓN AGREGADO PARA INGRESAR DINERO -->
-            <div class="button-ingresar">
-                <button id="btn-ingresar" class="action-button ingresar">
-                    <i class="fa-solid fa-money-bill-wave"></i>
+<main class="main-container">
+    <section class="balance-section">
+        <div class="balance-card">
+            <div class="balance-header">
+                <span class="label">Dinero disponible</span>
+                <button id="toggle-visibility" class="icon-button">
+                    <i class="fa-regular fa-eye" id="eye-icon"></i>
                 </button>
-                <span class="label">Ingresar</span>
             </div>
-
-            <!-- Boton para las Transferencias-->
-            <div class="button-transerir">
-                <button class="action-button tranferir">
-                    <i class="fa-solid fa-money-bill-transfer"></i>
-                </button>
-                <span class="label">Transferir</span>
-            </div>
-
-            <!-- Boton para mostrar El Alias-CVU-->
-            <div class="button-alias">
-                <button class="action-button Alias-CVU">
-                    <i class="fa-regular fa-id-card"></i>
-                </button>
-                <span class="label">Ver CVU</span>
-            </div>
+            <div class="amount" id="balance">$2960,34</div>
+            <button class="cvu-button" onclick="openModal('modal1')">CVU</button>
         </div>
-    </div>
 
+        <div class="action-buttons">
+            <button class="btn" onclick="openModal('modal2')">Ingresar dinero</button>
+            <button class="btn">Transferir</button>
+            <button class="btn full">Calculadora de Impuestos</button>
+        </div>
+    </section>
 
-    <div class="movimientos-recientes">
-        <h3>Últimos Movimientos</h3>
-        <ul class="movimientos-lista">
-        </ul>
-    </div>
-
-    <!-- Modal para ver la informacion de la transferencia -->
-    <div id="modalTransferencia" class="modal hidden">
-        <div class="modal-content">
-            <span id="cerrarModal" class="close-button">&times;</span>
-            <h2>Detalle de la Transferencia</h2>
-            <ul class="transfer-details">
-
-                <li><b>ID Operación:</b> <span id="modalOperacion"></span></li>
-                <li><b>Origen:</b> <span id="modalOrigen"></span></li>
-                <li><b>Destino:</b> <span id="modalDestino"></span></li>
-                <li><b>Monto:</b> <span id="modalMonto"></span></li>
-                <li><b>Estado:</b> <span id="modalEstado"></span></li>
-                <li><b>Fecha:</b> <span id="modalFecha"></span></li>
+    <section class="movements-section">
+        <div class="movements-card">
+            <h2 class="movements-h2">Últimos movimientos</h2>
+            <ul class="movements-list">
+                <li th:each="mov : ${movimientos}" th:text="${mov}">Ejemplo de movimiento</li>
             </ul>
         </div>
-    </div>
+    </section>
 
-    <!-- Modal para ver Ingresar Dinero -->
-    <div id="ingresar-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Ingresar dinero</h2>
-            <form id="ingresar-form">
-                <input type="number" id="ingresar-monto" placeholder="Monto a ingresar" required min="1" step="0.01">
-                <button type="submit">Confirmar</button>
-            </form>
-        </div>
-    </div>
-
-
-    <!-- Modal para las Transferencias -->
-    <div id="transfer-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Transferir Dinero</h2>
-
-            <div id="search-account-step">
-                <div class="form-group">
-                    <input type="text" id="destinatario" required placeholder=" ">
-                    <label for="destinatario">Alias o CVU</label>
-                </div>
-                <button id="buscar-cuenta">Buscar cuenta</button>
-            </div>
-
-            <div id="confirm-account-step" class="hidden">
-                <h3>Datos de la cuenta destino:</h3>
-                <div id="account-details"></div>
-                <button id="confirmar-cuenta">Confirmar cuenta</button>
-                <button id="cancelar-busqueda">Cancelar</button>
-            </div>
-
-            <div id="amount-step" class="hidden">
-                <input type="number" id="monto" name="monto" min="0" step="1" placeholder="$" required>
-                <button id="confirmar-transferencia">Transferir</button>
-                <button id="volver-busqueda">Volver</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para ver la informacion del Usuario -->
-    <div id="alias-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-alias">&times;</span>
-            <h2>Mi Alias y CVU</h2>
-
-            <div class="info-alias-cvu">
-                <div class="info-line">
-                    <div class="info-text">
-                        <strong>Alias:</strong> <span id="alias-value">Cargando...</span>
-                    </div>
-                    <button class="copy-button" id="copy-alias" title="Copiar Alias">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 9h-9c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm0 11h-9v-9h9v9zm-4-17H6c-1.1 0-2 .9-2 2v9h2V5h10V3z"
-                                  fill="currentColor"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="info-line">
-                    <div class="info-text">
-                        <strong>CVU:</strong> <span id="cvu-value">Cargando...</span>
-                    </div>
-                    <button class="copy-button" id="copy-cvu" title="Copiar CVU">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 9h-9c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm0 11h-9v-9h9v9zm-4-17H6c-1.1 0-2 .9-2 2v9h2V5h10V3z"
-                                  fill="currentColor"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal para ver la Calculadora de Impuestos -->
-    <div id="tax-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close-tax">&times;</span>
-                <h2>Calculadora de Impuestos</h2>
-            </div>
-
-            <div id="currency-selection">
-                <p>¿En qué moneda querés calcular?</p>
-                <button class="currency-button" data-currency="ARS">Pesos (ARS)</button>
-                <button class="currency-button" data-currency="USD">Dólares (USD)</button>
-            </div>
-
-            <div id="tax-form" class="hidden">
-                <label for="tax-monto">Monto en <span id="selected-currency-label">ARS</span>:</label>
-                <input type="number" id="tax-monto" min="0" step="0.01" placeholder="0.00">
-                <button id="calcular-tax">Calcular</button>
-                <div id="tax-result" style="margin-top: 1em;"></div>
-            </div>
-        </div>
-    </div>
 </main>
-
-<script th:src="@{/js/theme.js}"></script>
-<script th:src="@{/js/dashboard.js}"></script>
-<script th:src="@{/js/transactions.js}"></script>
-<div id="toast-container"></div>
-<script th:src="@{/js/toast.js}"></script>
-
+<div th:replace="modals :: modal1"></div>
+<div th:replace="modals :: modal2"></div>
+<div th:replace="modals :: modalperfil"></div>
 </body>
+
 </html>

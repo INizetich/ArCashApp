@@ -19,4 +19,9 @@ public class DashboardController {
     public String dashboard(HttpServletRequest request) {
      return "dashboard";
     }
+
+    @GetMapping("/demo")
+    public String dashboardtest(HttpServletRequest request) {
+        return "dashboard-old";
+    }
 }
