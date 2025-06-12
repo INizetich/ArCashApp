@@ -21,7 +21,7 @@ import java.util.UUID;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_transaction;
+    private Long id;
 
     private String id_operation;
 
@@ -55,7 +55,7 @@ public class Transaction {
     @Override
     public String toString() {
         return "Transaction{" +
-                "id_transaction=" + id_transaction +
+                "id_transaction=" + id +
                 ", id_operation='" + id_operation + '\'' +
                 ", idOrigin=" + idOrigin +
                 ", idDestination=" + idDestination +

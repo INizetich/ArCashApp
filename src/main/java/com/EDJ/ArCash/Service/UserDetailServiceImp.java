@@ -19,17 +19,26 @@ public class UserDetailServiceImp implements UserDetailsService {
     private UserRepository userRepository;
 
 
-   @Override
-   public UserDetails loadUserByUsername(String idString) throws UsernameNotFoundException {
-       try {
-           Long id = Long.parseLong(idString);
-           User user = userRepository.findById(id)
-                   .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
-           return new CustomUserDetails(user);
-       } catch (NumberFormatException e) {
-           throw new UsernameNotFoundException("Id inválido");
-       }
-   }
+//   @Override
+//   public UserDetails loadUserByUsername(String idString) throws UsernameNotFoundException {
+//       try {
+//           Long id = Long.parseLong(idString);
+//           User user = userRepository.findById(id)
+//                   .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+//           return new CustomUserDetails(user);
+//       } catch (NumberFormatException e) {
+//           throw new UsernameNotFoundException("Id inválido");
+//       }
+//   }
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Long id = Long.parseLong(username);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return new CustomUserDetails(user);
+    }
 
 
 

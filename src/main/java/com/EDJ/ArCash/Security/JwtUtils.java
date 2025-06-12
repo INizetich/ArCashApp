@@ -40,19 +40,21 @@ public class JwtUtils {
 
 
 
-    public static String generateToken(String idUser) {
+    public static String generateToken(String idUser, String role) {
         return Jwts.builder()
                 .setSubject(idUser)
                 .claim("userID",idUser)
+                .claim("role",role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600000))
                 .signWith(secretKey)
                 .compact();
     }
 
-    public static String generateRefreshToken(String idUser) {
+    public static String generateRefreshToken(String idUser, String role) {
         return Jwts.builder()
                 .setSubject(idUser)
+                .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 7 * 24 * 3600000)) // Expira en 7 días
                 .signWith(secretKey)

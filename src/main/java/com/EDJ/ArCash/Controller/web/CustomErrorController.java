@@ -1,6 +1,5 @@
 package com.EDJ.ArCash.Controller.web;
 
-
 import com.EDJ.ArCash.DTO.LoginResponse;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,16 +13,22 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public Object handleError(HttpServletRequest request) {
+        String uri = request.getRequestURI();
+        // Permitir que Spring maneje las rutas de Swagger/OpenAPI
+        if (uri.startsWith("/v3/api-docs") || uri.startsWith("/swagger-ui")) {
+            return null;
+        }
+
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         int statusCode = status != null ? (int) status : 500;
 
         if (isApiRequest(request)) {
             return ResponseEntity.status(statusCode)
-                    .body(new LoginResponse(false, "Ocurrió un error: " + statusCode, null,null,null));
+                    .body(new LoginResponse(false, "Ocurrió un error: " + statusCode, null, null, null,null));
         }
 
         // Renderiza la vista Thymeleaf "error.html"
-        return "error-404"; // <-- Esto busca templates/error.html
+        return "error-404";
     }
 
     private boolean isApiRequest(HttpServletRequest request) {

@@ -15,6 +15,6 @@ public class TokenCleanupRunner implements CommandLineRunner {
     public void run(String... args) {
         jdbcTemplate.execute("DELETE FROM recovery_tokens WHERE used = true");
         jdbcTemplate.execute("DELETE FROM refresh_tokens WHERE revoked = true");
-        jdbcTemplate.execute("DELETE FROM verification_token WHERE used = true");
+        jdbcTemplate.execute("DELETE FROM validation_tokens WHERE used = true");
     }
 }

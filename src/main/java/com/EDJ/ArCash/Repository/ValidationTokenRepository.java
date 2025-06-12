@@ -18,7 +18,8 @@ public interface ValidationTokenRepository extends JpaRepository<ValidationToken
 
     ValidationToken findByToken(String token);
 
-    void deleteByUser_Iduser(Long iduser);
+    void deleteByUser_Id(Long id);
+
 
     List<ValidationToken> findAllByUsedTrueAndExpirationDateBefore(LocalDateTime now);
 }

@@ -2,15 +2,19 @@ package com.EDJ.ArCash.Service;
 
 import com.EDJ.ArCash.DTO.LoginRequest;
 import com.EDJ.ArCash.DTO.LoginResponse;
+import com.EDJ.ArCash.DTO.UserResponse;
 import com.EDJ.ArCash.Models.*;
 import com.EDJ.ArCash.Repository.*;
 import com.EDJ.ArCash.Security.JwtUtils;
 import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.EDJ.ArCash.Models.Imp.LogoutStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,11 +58,11 @@ public class AuthService {
             User usuario = credentials.getUser();
 
             if (!passwordEncoder.matches(loginRequest.getPassword(), credentials.getPass())) {
-                return new LoginResponse(false, "Credenciales incorrectas", null, null, null);
+                return new LoginResponse(false, "Credenciales incorrectas", null, null, null,null);
             }
 
-            if (!usuario.isEnabled()) {
-                return new LoginResponse(false, "Usuario no habilitado", null, null, null);
+            if (!usuario.isActive()) {
+                return new LoginResponse(false, "Usuario no habilitado", null, null, null,null);
             }
 
             List<RefreshToken> activeTokens = refreshTokenRepository.findAllByUserAndRevokedFalse(usuario);
@@ -66,20 +70,20 @@ public class AuthService {
             if (!activeTokens.isEmpty()) {
                 refreshToken = activeTokens.get(0).getRefreshToken();
             } else {
-                refreshToken = JwtUtils.generateRefreshToken(String.valueOf(usuario.getIduser()));
+                refreshToken = JwtUtils.generateRefreshToken(String.valueOf(usuario.getId()), usuario.getPermissions().name());
                 saveRefreshToken(usuario, refreshToken);
             }
 
-            String accessToken = JwtUtils.generateToken(String.valueOf(usuario.getIduser()));
+            String accessToken = JwtUtils.generateToken(String.valueOf(usuario.getId()), usuario.getPermissions().name());
 
-            Optional<Account> optionalAccount = accountRepository.findByUserIduser(usuario.getIduser());
+            Optional<Account> optionalAccount = accountRepository.findByUser_Id(usuario.getId());
             if (optionalAccount.isPresent()) {
                 Account account = optionalAccount.get();
-                return new LoginResponse(true, "Login exitoso", accessToken, refreshToken, account.getIdAccount());
+                return new LoginResponse(true, "Login exitoso", accessToken, refreshToken, account.getIdAccount(), usuario.getPermissions().name());
             }
-            return new LoginResponse(false, "Cuenta no encontrada", null, null, null);
+            return new LoginResponse(false, "Cuenta no encontrada", null, null, null,null);
         }
-        return new LoginResponse(false, "Usuario no encontrado", null, null, null);
+        return new LoginResponse(false, "Usuario no encontrado", null, null, null,null);
     }
 
     public LogoutStatus logout(String accessToken) {
@@ -115,11 +119,10 @@ public class AuthService {
 
     public boolean isValidSession(String token) {
         try {
-            String userId = jwtUtils.extractUserId(token);
+            String userId = JwtUtils.extractUserId(token);
             if (userId == null) return false;
 
-            return refreshTokenRepository
-                    .existsByUser_IduserAndRevokedFalse(Long.parseLong(userId));
+            return refreshTokenRepository.existsByUser_IdAndRevokedFalse(Long.parseLong(userId));
 
         } catch (Exception e) {
             return false;
@@ -137,13 +140,12 @@ public class AuthService {
     }
 
 
-
     @Transactional
     public boolean enviarCorreoRecuperacion(String email) {
         Optional<User> userOpt = userRepository.findByEmail(email);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            recoveryTokenRepository.deleteByUser_Iduser(user.getIduser());
+            recoveryTokenRepository.deleteByUser_Id(user.getId());
             String token = recoveryTokenService.createRecoveryToken(user);
 
             try {
@@ -194,11 +196,10 @@ public class AuthService {
         return !token.isUsed() && token.getExpirationDate().isAfter(LocalDateTime.now());
     }
 
-    // En AuthService.java
+
 
     @Transactional
-    public boolean cambiarAliasYUsername(Long accountId, String nuevoAlias) {
-        // Debe contener al menos una letra, no solo números, no solo especiales, no vacío
+    public boolean cambiarAliasYUsername(Long userId, String nuevoAlias) {
         String regex = "^(?=.*[A-Za-z])[A-Za-z\\d]{4,25}$";
         if (nuevoAlias == null || nuevoAlias.trim().isEmpty() ||
                 !nuevoAlias.matches(regex) ||
@@ -206,19 +207,24 @@ public class AuthService {
             return false;
         }
 
-        Optional<Account> accountOpt = accountRepository.findById(accountId);
+        Optional<Account> accountOpt = accountRepository.findByUser_Id(userId);
         if (accountOpt.isEmpty()) return false;
         Credentials credentials = accountOpt.get().getUser().getCredentials();
         User user = accountOpt.get().getUser();
 
+
         if (credentialRepository.findByUsername(nuevoAlias).isPresent()) return false;
 
         user.setAlias(nuevoAlias);
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
 
         credentials.setUsername(nuevoAlias);
         credentialRepository.save(credentials);
         return true;
     }
+
+
+
+
 
 }

@@ -3,8 +3,13 @@ function cargarMovimientos() {
     const userID = Number(localStorage.getItem("accountId"));
     const modal = document.getElementById("modalTransferencia");
     const cerrarModal = document.getElementById("cerrarModal");
+    const token = localStorage.getItem("JWT");
 
-    fetch(`/api/transactions/${userID}/getTransactions`)
+    fetch(`/api/transactions/${userID}/getTransactions`, {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
         .then(response => response.json())
         .then(data => {
             lista.innerHTML = "";

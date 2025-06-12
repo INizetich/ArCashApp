@@ -1,8 +1,10 @@
 package com.EDJ.ArCash.Service;
 
+import com.EDJ.ArCash.Models.Imp.Permissions;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.UserRepository;
 import jakarta.mail.MessagingException;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 
@@ -32,6 +34,8 @@ public class UserService {
         user.setName(user.getName().substring(0,1).toUpperCase() + user.getName().substring(1).toLowerCase());
         user.setLastName(user.getLastName().substring(0,1).toUpperCase() + user.getLastName().substring(1).toLowerCase());
         user.setEnabled(false);
+        user.setActive(false);
+        user.setPermissions(Permissions.USER);
         userRepository.save(user);
         credentialsService.createCredentials(user, rawPassword);
         String token = validationTokenService.createValidationToken(user);
@@ -42,6 +46,7 @@ public class UserService {
     public void validarUsuario(User user){
         accountService.createAccount(user, "PESOS"); ///UNA VEZ VALIDE SU CUENTA
         user.setEnabled(true);
+        user.setActive(true);
         userRepository.save(user);
         validationTokenService.usedToken(user);
     }

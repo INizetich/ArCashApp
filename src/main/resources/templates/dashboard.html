@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org"  lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +32,9 @@
 <nav id="sidebar" class="sidebar hidden">
     <ul>
         <li><a href="#" id="abrir-calculadora">Calculadora Impuestos</a></li>
+        <li id="admin-panel-link" style="display:none;">
+            <a href="/adminDashboard" id="sidebar-admin-link">Panel Admin</a>
+        </li>
     </ul>
 
 
@@ -46,47 +49,49 @@
         </div>
         <div class="user-name" id="user-name-topbar">Cargando...</div>
         <div class="dropdown-menu" id="profileMenu">
-            <a href="#" id="open-profile-modal">Mi Perfil</a> <!-- CAMBIAMOS el href -->
+            <a href="#" id="open-profile-modal">Mi Perfil</a>
             <a href="/logout">Salir</a>
         </div>
-    </div>
 
 
-    <div id="profile-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button close-profile">&times;</span>
-            <h2>Perfil de Usuario</h2>
-            <div class="profile-details">
-                <div class="profile-photo" tabindex="0">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="12" fill="#ccc"/>
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#666"/>
-                    </svg>
+        <div id="profile-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-button close-profile">&times;</span>
+                <h2>Perfil de Usuario</h2>
+                <div class="profile-details">
+                    <div class="profile-photo" tabindex="0">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="12" fill="#ccc"/>
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                  fill="#666"/>
+                        </svg>
+                    </div>
+                    <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
+                    <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
+                    <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
+                    <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
+                    <p>
+                        <strong>Nombre de usuario:</strong>
+                        <span id="profile-username-display" style="display: inline-flex; align-items: center;">cargando...</span>
+                        <button id="edit-username-btn" title="Editar nombre de usuario">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <input type="text" id="profile-username-input" class="hidden" maxlength="25"/>
+                    </p>
+                    <p>
+                        <strong>Alias:</strong>
+                        <span id="profile-alias-display"
+                              style="display: inline-flex; align-items: center;">cargando...</span>
+                        <button id="edit-alias-btn" title="Editar alias">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <input type="text" id="profile-alias-input" class="hidden" maxlength="25"/>
+                    </p>
+                    <p><strong>Cvu:</strong> <span id="profile-cvu">Cargando...</span></p>
                 </div>
-                <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
-                <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
-                <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
-                <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
-                <p>
-                    <strong>Nombre de usuario:</strong>
-                    <span id="profile-username-display" style="display: inline-flex; align-items: center;">cargando...</span>
-                    <button id="edit-username-btn" title="Editar nombre de usuario">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <input type="text" id="profile-username-input" class="hidden" maxlength="25" />
-                </p>
-                <p>
-                    <strong>Alias:</strong>
-                    <span id="profile-alias-display" style="display: inline-flex; align-items: center;">cargando...</span>
-                    <button id="edit-alias-btn" title="Editar alias">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <input type="text" id="profile-alias-input" class="hidden" maxlength="25" />
-                </p>
-                <p><strong>Cvu:</strong> <span id="profile-cvu">Cargando...</span></p>
             </div>
         </div>
-    </div>
+        </div>
 </nav>
 
 <main class="dashboard">

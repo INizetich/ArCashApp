@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('/create', {
+            const response = await fetch('/api/user/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -18,6 +18,6 @@ public interface RecoveryTokenRepository extends JpaRepository<RecoveryToken,Lon
 
         List<RecoveryToken> findAllByUsedTrue();
 
-        void deleteByUser_Iduser(Long iduser);
+        void deleteByUser_Id(Long id);
 
 }

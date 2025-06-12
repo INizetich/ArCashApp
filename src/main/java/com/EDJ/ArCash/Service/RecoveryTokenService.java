@@ -15,7 +15,7 @@ public class RecoveryTokenService {
 
     @Transactional
     public String createRecoveryToken(User user){
-        recoveryTokenRepository.deleteByUser_Iduser(user.getIduser());
+        recoveryTokenRepository.deleteByUser_Id(user.getId());
         RecoveryToken recoveryToken = new RecoveryToken(user);
         recoveryTokenRepository.save(recoveryToken);
         return recoveryToken.getToken();

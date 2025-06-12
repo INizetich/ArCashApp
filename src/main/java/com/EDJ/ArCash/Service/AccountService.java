@@ -25,14 +25,14 @@ public class AccountService {
     }
 
 
-    public Account createAccount(User user, String accountType) {
+    public void createAccount(User user, String accountType) {
         Account account = new Account();
         account.setUser(user);
         account.setAccountType(accountType);
         account.setBalance(0.0);
         account.setAccountNickname(generateUniqueNickname());
         account.setAccountCvu(generateUniqueCvu());
-        return accountRepository.save(account);
+        accountRepository.save(account);
     }
 
 
@@ -78,7 +78,7 @@ public class AccountService {
         }
         Account acc = optionalAccount.get();
 
-        if (acc.getUser().getIduser().equals(responseEntity)) {
+        if (acc.getUser().getId().equals(responseEntity)) {
             if (!accountRepository.existsByAccountNickname(newAlias)) {
                 acc.setAccountNickname(newAlias);
                 accountRepository.save(acc);

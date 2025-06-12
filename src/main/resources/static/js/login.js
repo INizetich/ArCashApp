@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     form.reset();
                     localStorage.setItem('JWT', data.accessToken);
                     localStorage.setItem('accountId', data.accountId);
+                    localStorage.setItem('role', data.role);
                     setTimeout(() => {
                         window.location.href = '/dashboard';
                     }, 2000);

@@ -113,17 +113,7 @@ body{
     display: none;
 }
 
-.close-tax {
-    position: absolute;
-    padding-left: 230px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #555;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.3s ease;
-    border-radius: 50%;
-}
+
 
 .close-tax:hover {
     color: #ff0000;
@@ -152,13 +142,6 @@ body{
     color: var(--text-primary);
 }
 
-.close-alias {
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--text-primary);
-    cursor: pointer;
-}
 
 .modal-content label {
     display: block;
@@ -193,13 +176,7 @@ body{
 
 
 /* Botón de cierre */
-.close-button {
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--text-primary);
-    cursor: pointer;
-}
+
 
 .theme-control {
     position: fixed;
@@ -1019,7 +996,25 @@ body{
 }
 
 
+
 [data-theme="dark"] #edit-alias-btn i,
 [data-theme="dark"] #edit-username-btn i {
     color: var(--platinum, var(--platinum));
+}
+
+
+/* Para todas las cruces de cerrar modal */
+.close-button,
+.close-alias,
+.close-tax {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    float: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: color 0.3s;
 }

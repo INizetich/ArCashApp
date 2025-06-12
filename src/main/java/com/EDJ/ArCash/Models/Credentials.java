@@ -3,7 +3,6 @@ package com.EDJ.ArCash.Models;
 import com.EDJ.ArCash.Models.Imp.Permissions;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,8 +31,7 @@ public class Credentials {
     @Column(name = "pass")
     private String pass;
 
-    @Column(name = "permissions")
-    private String permissions;
+
 
 
     public Credentials(User user,String username, String pass) {
@@ -42,12 +40,5 @@ public class Credentials {
         this.pass = pass;
     }
 
-    @PrePersist
-    private void PrePersist(){
-        InitializePermission();
-    }
 
-    private void InitializePermission(){
-        permissions = Permissions.USER.toString();
-    }
 }

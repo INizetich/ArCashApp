@@ -37,7 +37,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByIdAccount(Long id);
 
     /// METODO PAR ENCONTRAR UNA CUENTA CON EL ID DEL USUARIO
-    Optional<Account> findByUserIduser(Long userId);
+    Optional<Account> findByUser_Id(Long userId);
 
     /// METODO  PARA ACTUALIZAR EL BALANCE DE UNA CUENTA EN ESPECIFICO POR SU ID
     @Modifying
