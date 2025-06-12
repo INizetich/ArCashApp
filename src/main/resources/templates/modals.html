@@ -15,8 +15,9 @@
     <div class="modal-content" id="modal1">
         <div class="modal-background">
         <button class="close-button" data-modal-id="modal1">&times;</button>
-        <h2>Modal 1</h2>
-        <p>Este es el modal 1</p>
+        <h2>Mostrar CVU/Alias</h2>
+        <p>CVU: </p>
+        <p>Alias: </p>
         <button class="action-button">Action</button>
         </div>
     </div>
@@ -26,21 +27,62 @@
     <div class="modal-content" id="modal2">
         <div class="modal-background">
             <button class="close-button" data-modal-id="modal2">&times;</button>
-            <h2>Modal 2</h2>
-            <p>Este es el modal 2</p>
+            <h2>Ingresar dinero</h2>
+            <p>Ingrese el total a ingresar</p>
+            <input type="text" id="ingresar-dinero" name="ingresar-dinero">
             <button class="action-button">Action</button>
         </div>
     </div>
 </div>
 
+<div th:fragment="modaltransferir">
+    <div class="modal-content" id="modaltransferir">
+        <div class="modal-background">
+            <button class="close-button" data-modal-id="modaltransferir">&times;</button>
+            <h2>Transferir dinero</h2>
+
+            <div id="transferencia-ingresar">
+                <p>Ingrese el <strong>Alias o CVU</strong> a transferir</p>
+                <input type="text" id="aliasCvuInput" name="aliasCvuInput">
+                <button class="action-button" onclick="">Confirmar</button>
+            </div>
+
+            <div id="transferencia-mostrar">
+                <p>Datos del destinatario</p>
+                <p><strong>CVU:</strong>  </p>
+                <p><strong>Alias:</strong>  </p>
+                <p><strong>Nombre:</strong> </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:fragment="modalcalculadora">
+    <div class="modal-content" id="modalcalculadora">
+        <div class="modal-background">
+            <button class="close-button" data-modal-id="modalcalculadora">&times;</button>
+            <h2>Calculadora de impuestos</h2>
+            <p>Seleccione la moneda:</p>
+            <button class="action-button">Action</button>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div th:fragment="modalperfil">
     <div class="modal-content" id="modalperfil">
         <div class="modal-background">
             <button class="close-button" data-modal-id="modalperfil">&times;</button>
-            <h2>Modal 3 </h2>
-            <p>Este es el modal de perfil</p>
-            <p><strong>Nombre:</strong> <span id="profile-name">Cargando...</span></p>
+            <h2>Perfil de usuario </h2>
+            <p>Bienvenido a tu perfil</p>
+
+            <p><strong>Nombre:</strong> <span id="profile-name" th:text="${username}"></span></p>
             <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
+            <p><strong>Alias:</strong> <span id="profile-alias">Cargando...</span></p>
+            <p><strong>Telefono:</strong> <span id="profile-phone">Cargando...</span></p>
             <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
             <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
             <button class="action-button">Action</button>

@@ -44,8 +44,8 @@
 
         <div class="action-buttons">
             <button class="btn" onclick="openModal('modal2')">Ingresar dinero</button>
-            <button class="btn">Transferir</button>
-            <button class="btn full">Calculadora de Impuestos</button>
+            <button class="btn" onclick="openModal('modaltransferir')">Transferir</button>
+            <button class="btn full" onclick="openModal('modalcalculadora')">Calculadora de Impuestos</button>
         </div>
     </section>
 
@@ -62,6 +62,9 @@
 <div th:replace="modals :: modal1"></div>
 <div th:replace="modals :: modal2"></div>
 <div th:replace="modals :: modalperfil"></div>
+<div th:replace="modals :: modaltransferir"></div>
+<div th:replace="modals :: modalcalculadora"></div>
+
 </body>
 
 </html>
