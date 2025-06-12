@@ -103,5 +103,23 @@ function cargarMovimientos() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    const socket = new SockJS("/ws");
+    const stompClient = Stomp.over(socket);
+
+    const userID = Number(localStorage.getItem("accountId")); // Asegúrate de definir userID aquí
+
+    stompClient.connect({}, () => {
+        stompClient.subscribe("/topic/notification/" + userID, (message) => {
+            const contenido = message.body;
+            showToast(contenido); // Muestra el mensaje en tiempo real
+            cargarMovimientos();  // Opcional: recarga movimientos al recibir dinero
+            const audio = document.getElementById("toast-sound");
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play();
+            }
+        });
+    });
     cargarMovimientos();
 });
+

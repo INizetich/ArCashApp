@@ -6,6 +6,7 @@ import com.EDJ.ArCash.Models.Transaction;
 import com.EDJ.ArCash.Repository.AccountRepository;
 import com.EDJ.ArCash.Repository.TransactionRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,13 +15,14 @@ import java.util.stream.Collectors;
 @Service
 public class TransactionService {
 
-
+    private final SimpMessagingTemplate messagingTemplate;
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
 
-    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository) {
+    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository, SimpMessagingTemplate messagingTemplate) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
+        this.messagingTemplate = messagingTemplate;
     }
 
 
@@ -67,10 +69,16 @@ public class TransactionService {
             accountRepository.save(cuentaOrigen);
             accountRepository.save(cuentaDestino);
             transactionRepository.save(transaction);
+
+            String nombreOrigen = cuentaOrigen.getUser().getName();
+            String apellidoOrigen = cuentaOrigen.getUser().getLastName();
+           String nombreCompletoOrigen = nombreOrigen.concat(apellidoOrigen);
+
+            String destino = "/topic/notification/" + cuentaDestino.getIdAccount();
+            messagingTemplate.convertAndSend(destino, "Recibiste $" + monto + " de: " + nombreCompletoOrigen);
             return true;
         }
     }
-
 
 
     public List<TransactionDTO> listaTransacciones(Long id) {

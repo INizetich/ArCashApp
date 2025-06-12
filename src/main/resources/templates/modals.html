@@ -44,12 +44,44 @@
             <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
             <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
             <section class="two-buttons">
-            <button class="action-button button-left">Action</button>
             <button class="action-button logout-button" onclick="logout()">Log-out</button>
             </section>
         </div>
     </div>
 </div>
 
+<div th:fragment="modaltransferir">
+    <div class="modal-content" id="modaltransferir">
+        <div class="modal-background">
+            <button class="close-button" data-modal-id="modaltransferir">&times;</button>
+            <h2>Transferir dinero</h2>
+
+            <div id="transferencia-ingresar">
+                <p>Ingrese el <strong>Alias o CVU</strong> a transferir</p>
+                <input type="text" id="aliasCvuInput" name="aliasCvuInput">
+                <button class="action-button" onclick="">Confirmar</button>
+            </div>
+
+            <div id="transferencia-mostrar">
+                <p>Datos del destinatario</p>
+                <p><strong>CVU:</strong>  </p>
+                <p><strong>Alias:</strong>  </p>
+                <p><strong>Nombre:</strong> </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:fragment="modalcalculadora">
+    <div class="modal-content" id="modalcalculadora">
+        <div class="modal-background">
+            <button class="close-button" data-modal-id="modalcalculadora">&times;</button>
+            <h2>Calculadora de impuestos</h2>
+            <p>Seleccione la moneda:</p>
+            <button class="action-button">Action</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
