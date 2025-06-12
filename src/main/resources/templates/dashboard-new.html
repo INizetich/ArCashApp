@@ -22,7 +22,7 @@
         <button id="toggle-mode" class="icon-button" title="Cambiar modo">
             <i class="fa-regular fa-lightbulb"></i>
         </button>
-        <button class="profile-button">
+        <button class="profile-button" onclick="openModal('modalperfil')">
             <i class="fa-solid fa-user"></i>
             <span class="welcome">Hola, <span th:text="${nombre}">Usuario</span></span>
         </button>
@@ -61,6 +61,7 @@
 </main>
 <div th:replace="modals :: modal1"></div>
 <div th:replace="modals :: modal2"></div>
+<div th:replace="modals :: modalperfil"></div>
 </body>
 
 </html>
