@@ -1,7 +1,7 @@
 package com.EDJ.ArCash.Controller.api;
 
-import com.EDJ.ArCash.DTO.RegisterResponse;
-import com.EDJ.ArCash.DTO.RegistrerRequest;
+import com.EDJ.ArCash.DTO.NonAuthDTO.RegisterResponse;
+import com.EDJ.ArCash.DTO.NonAuthDTO.RegistrerRequest;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;

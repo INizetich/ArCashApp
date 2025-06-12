@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelectorAll('.modal-content').forEach(modal => {
-        modal.addEventListener('click', function(e) {
+        modal.addEventListener('click', function (e) {
             if (e.target === modal) {
                 closeModal(modal.id);
             }

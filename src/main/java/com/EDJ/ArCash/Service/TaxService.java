@@ -1,7 +1,7 @@
 package com.EDJ.ArCash.Service;
 
-import com.EDJ.ArCash.DTO.TaxPesosResponse;
-import com.EDJ.ArCash.DTO.TaxUsdResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.TaxPesosResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.TaxUsdResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

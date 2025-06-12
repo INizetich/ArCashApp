@@ -1,9 +1,6 @@
 package com.EDJ.ArCash;
 
-import com.EDJ.ArCash.DTO.TransactionDTO;
-import com.EDJ.ArCash.Models.RefreshToken;
-import com.EDJ.ArCash.Models.Transaction;
-import com.EDJ.ArCash.Models.User;
+import com.EDJ.ArCash.DTO.AuthDTO.TransactionDTO;
 import com.EDJ.ArCash.Repository.RefreshTokenRepository;
 import com.EDJ.ArCash.Repository.UserRepository;
 import com.EDJ.ArCash.Service.TransactionService;
@@ -14,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

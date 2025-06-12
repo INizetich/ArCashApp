@@ -1,9 +1,9 @@
 package com.EDJ.ArCash.Controller.api;
 
-import com.EDJ.ArCash.DTO.AccountRequest;
-import com.EDJ.ArCash.DTO.AccountResponse;
-import com.EDJ.ArCash.DTO.AliasRequest;
-import com.EDJ.ArCash.DTO.AliasResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.AccountRequest;
+import com.EDJ.ArCash.DTO.AuthDTO.AccountResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.AliasRequest;
+import com.EDJ.ArCash.DTO.AuthDTO.AliasResponse;
 import com.EDJ.ArCash.Models.Account;
 import com.EDJ.ArCash.Security.JwtUtils;
 import com.EDJ.ArCash.Service.AccountService;

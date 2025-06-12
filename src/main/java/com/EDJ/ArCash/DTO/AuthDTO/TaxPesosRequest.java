@@ -1,5 +1,5 @@
 
-package com.EDJ.ArCash.DTO;
+package com.EDJ.ArCash.DTO.AuthDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;

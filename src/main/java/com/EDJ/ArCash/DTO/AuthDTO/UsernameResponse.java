@@ -1,5 +1,4 @@
-
-package com.EDJ.ArCash.DTO;
+package com.EDJ.ArCash.DTO.AuthDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -9,11 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@Schema(description = "Respuesta al cambiar el alias de la cuenta")
-public class AliasResponse {
+@Schema(description = "Respuesta al cambiar el nombre de usuario")
+public class UsernameResponse {
     @Schema(description = "Indica si el cambio fue exitoso", example = "true")
     private boolean success;
 
-    @Schema(description = "Mensaje de respuesta", example = "Alias cambiado correctamente")
+    @Schema(description = "Mensaje descriptivo del resultado", example = "Nombre de usuario actualizado correctamente")
     private String message;
 }

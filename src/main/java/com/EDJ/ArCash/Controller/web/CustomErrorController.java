@@ -1,6 +1,6 @@
 package com.EDJ.ArCash.Controller.web;
 
-import com.EDJ.ArCash.DTO.LoginResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.LoginResponse;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;

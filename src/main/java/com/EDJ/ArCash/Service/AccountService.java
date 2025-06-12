@@ -1,6 +1,6 @@
 package com.EDJ.ArCash.Service;
 
-import com.EDJ.ArCash.DTO.AliasResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.AliasResponse;
 import com.EDJ.ArCash.Models.Account;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.AccountRepository;

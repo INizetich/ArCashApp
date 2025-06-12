@@ -5,48 +5,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const balanceElement = document.getElementById("balance");
     const eyeIcon = document.getElementById("eye-icon");
 
-    // COMIENZA LA LOGICA DE VALIDACIÓN DEL TOKEN
     const token = localStorage.getItem("JWT");
+    const refreshToken = localStorage.getItem("refreshToken");
 
     if (!token) {
         window.location.href = "/PreLogin";
         return;
     }
 
-    fetch("/api/user/data", {
-        method: "GET",
-        headers: {
-            "Authorization": "Bearer " + token
+
+    ///FUNCION QUE TRAE LOS DATOS DEL USUARIO AUTENTICADO (LA LLAMAMOS CUANDO REFRESCAMOS EL ACCESS TOKEN Y EN LA FUNCION LOADUSERDATE())
+    function fetchUserData(tokenToUse) {
+        return fetch("/api/user/data", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + tokenToUse
+            }
+        });
+    }
+
+    async function tryRefreshToken() {
+        if (!refreshToken) return false;
+        const response = await fetch("/api/auth/refresh", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ refreshToken })
+        });
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem("JWT", data.accessToken);
+            return data.accessToken;
         }
-    })
-        .then(async response => {
-            if (!response.ok) {
+        return false;
+    }
+
+    async function loadUserData() {
+        let currentToken = token;
+        let response = await fetchUserData(currentToken);
+
+        if (!response.ok) {
+            // Si el token expiró o fue revocado, intenta refrescarlo
+            const newToken = await tryRefreshToken();
+            if (newToken) {
+                response = await fetchUserData(newToken);
+                if (!response.ok) {
+                    localStorage.removeItem("JWT");
+                    window.location.href = "/PreLogin";
+                    return;
+                }
+            } else {
                 localStorage.removeItem("JWT");
                 window.location.href = "/PreLogin";
                 return;
             }
+        }
 
-            const data = await response.json();
-            // Guardar la data en localStorage y la llamamos a necesidad.
-            localStorage.setItem("userData", JSON.stringify(data));
-        })
-        .catch(err => {
-            console.error("Error al validar token:", err);
-            localStorage.removeItem("JWT");
-            window.location.href = "/PreLogin";
-        });
+        const data = await response.json();
+        localStorage.setItem("userData", JSON.stringify(data));
+        const nombre = data.name;
+        const userData = JSON.parse(localStorage.getItem("userData"));
 
-    // FINALIZA LA LOGICA DE VALIDACIÓN DEL TOKEN
-
-    const userData = JSON.parse(localStorage.getItem("userData"));
-
-    if(userData){
-        const nombre = userData.name;
-        const welcomeSpan = document.querySelector(".welcome span");
-        if(welcomeSpan){
-            welcomeSpan.textContent = nombre;
+        if (userData) {
+            const welcomeSpan = document.querySelector(".welcome span");
+            if (welcomeSpan) {
+                welcomeSpan.textContent = nombre;
+            }
         }
     }
+
+    loadUserData();
 
     let balanceVisible = true;
 

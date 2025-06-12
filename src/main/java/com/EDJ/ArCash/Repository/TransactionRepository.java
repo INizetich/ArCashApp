@@ -1,12 +1,10 @@
 package com.EDJ.ArCash.Repository;
 
-import com.EDJ.ArCash.DTO.TransactionDTO;
 import com.EDJ.ArCash.Models.Account;
 import com.EDJ.ArCash.Models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
 import java.util.List;
 
 @Repository

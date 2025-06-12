@@ -1,6 +1,6 @@
 package com.EDJ.ArCash.Service;
 
-import com.EDJ.ArCash.DTO.TransactionDTO;
+import com.EDJ.ArCash.DTO.AuthDTO.TransactionDTO;
 import com.EDJ.ArCash.Models.Account;
 import com.EDJ.ArCash.Models.Transaction;
 import com.EDJ.ArCash.Repository.AccountRepository;
@@ -8,8 +8,6 @@ import com.EDJ.ArCash.Repository.TransactionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 

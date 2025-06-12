@@ -1,6 +1,6 @@
 package com.EDJ.ArCash.Security;
 
-import com.EDJ.ArCash.DTO.AccountResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.AccountResponse;
 import com.EDJ.ArCash.Models.RefreshToken;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.RefreshTokenRepository;
@@ -10,12 +10,11 @@ import io.jsonwebtoken.JwtParserBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import java.nio.charset.StandardCharsets;
+
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;

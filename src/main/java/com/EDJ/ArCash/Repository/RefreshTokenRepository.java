@@ -20,5 +20,5 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken,Long>
     int deleteByRevokedTrueOrExpiresAtBefore(LocalDateTime dateTime);
 
 
-
+    Optional<RefreshToken> findByRefreshTokenAndRevokedFalse(String refreshToken);
 }

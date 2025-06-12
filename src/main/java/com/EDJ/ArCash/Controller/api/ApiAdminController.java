@@ -1,13 +1,11 @@
 package com.EDJ.ArCash.Controller.api;
 
 
-import com.EDJ.ArCash.DTO.AdminRequest;
-import com.EDJ.ArCash.DTO.RegistrerRequest;
-import com.EDJ.ArCash.DTO.UserResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.AdminRequest;
+import com.EDJ.ArCash.DTO.AuthDTO.UserResponse;
 import com.EDJ.ArCash.Models.Imp.Permissions;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Service.AdminService;
-import com.EDJ.ArCash.Service.AuthService;
 import com.EDJ.ArCash.Service.UserService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;

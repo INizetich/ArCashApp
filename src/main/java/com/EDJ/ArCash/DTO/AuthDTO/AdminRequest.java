@@ -1,4 +1,4 @@
-package com.EDJ.ArCash.DTO;
+package com.EDJ.ArCash.DTO.AuthDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

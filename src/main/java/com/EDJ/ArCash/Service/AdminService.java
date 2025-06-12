@@ -1,6 +1,6 @@
 package com.EDJ.ArCash.Service;
 
-import com.EDJ.ArCash.DTO.UserResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.UserResponse;
 import com.EDJ.ArCash.Models.User;
 import com.EDJ.ArCash.Repository.UserRepository;
 import com.EDJ.ArCash.Security.JwtUtils;

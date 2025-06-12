@@ -1,6 +1,6 @@
 package com.EDJ.ArCash.Service;
 
-import com.EDJ.ArCash.DTO.ApiUsdResponse;
+import com.EDJ.ArCash.DTO.AuthDTO.ApiUsdResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
