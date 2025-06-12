@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // FINALIZA LA LOGICA DE VALIDACIÓN DEL TOKEN
 
     const userData = JSON.parse(localStorage.getItem("userData"));
-    const nombre = userData.name;
 
     if(userData){
+        const nombre = userData.name;
         const welcomeSpan = document.querySelector(".welcome span");
         if(welcomeSpan){
             welcomeSpan.textContent = nombre;

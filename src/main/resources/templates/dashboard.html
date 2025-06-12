@@ -8,8 +8,9 @@
     <title>Dashboard - ArCash</title>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}">
     <link rel="stylesheet" th:href="@{/css/modals.css}">
-    <script defer th:src="@{/js/dashboard.js}"></script>
     <script defer th:src="@{/js/modals.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/toast.css}">
+    <script th:src="@{/js/toast.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="light-mode">
@@ -59,9 +60,11 @@
     </section>
 
 </main>
+<div id="toast-container"></div>
 <div th:replace="modals :: modal1"></div>
 <div th:replace="modals :: modal2"></div>
 <div th:replace="modals :: modalperfil"></div>
+<script th:src="@{/js/dashboard.js}"></script>
 </body>
 
 </html>

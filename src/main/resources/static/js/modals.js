@@ -21,6 +21,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    window.logout = function() {
+        const token = localStorage.getItem('JWT');
+        if (!token) {
+            window.location.href = '/PreLogin';
+            return;
+        }
+
+        fetch('/api/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
+            .then(() => {
+                localStorage.clear();
+                showToast('Sesión cerrada con éxito', 'success');
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 1800);
+            })
+            .catch(error => {
+                console.error('Error durante el logout:', error);
+                localStorage.clear();
+                window.location.href = '/PreLogin';
+            });
+    };
+
     document.querySelectorAll('.close-button').forEach(closeBtn => {
         const modalId = closeBtn.getAttribute('data-modal-id');
         closeBtn.addEventListener('click', () => closeModal(modalId));
