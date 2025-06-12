@@ -156,6 +156,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Dependencia de websocket para notificaciones en tiempo real-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
 
 
 	</dependencies>
