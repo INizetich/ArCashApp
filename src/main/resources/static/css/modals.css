@@ -71,7 +71,6 @@ body.dark-mode .modal-background{
 }
 
 .modal-content p {
-    margin-bottom: 1.5rem;
 }
 
 .action-button {
@@ -113,10 +112,12 @@ body.dark-mode .modal-background{
     display: inline-flex;
     align-items: center;
     transform: translateY(-2px);
-
+    transition: color 0.2s;
 }
+
 .edit-btn:hover {
     color: #16263E;
+
 }
 
 
@@ -134,9 +135,41 @@ body.dark-mode .modal-background{
 }
 
 .logout-button{
-    background-color: darkred !important;
+    background-color: #b50000 !important;
 }
 
 .logout-button:hover{
-    background-color: #b50000 !important;
+
+    background-color: darkred !important;
+}
+
+.display-block{
+    padding-bottom: .5rem;
+}
+
+.display-info{
+    font-family: "Quicksand", sans-serif;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-item label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #555;
+}
+
+.hidden {
+    display: none;
 }
