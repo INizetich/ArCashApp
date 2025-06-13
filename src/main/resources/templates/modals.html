@@ -18,7 +18,6 @@
         <h2>Mostrar CVU/Alias</h2>
         <p>CVU: </p>
         <p>Alias: </p>
-        <button class="action-button">Action</button>
         </div>
     </div>
 </div>
@@ -77,15 +76,27 @@
         <div class="modal-background">
             <button class="close-button" data-modal-id="modalperfil">&times;</button>
             <h2>Perfil de usuario </h2>
-            <p>Bienvenido a tu perfil</p>
+            <br>Bienvenido a tu perfil</br>
+            <br><strong>Nombre Completo:</strong> <span id="profile-name" th:text="${username}"></span></br>
+            <br><strong>Correo:</strong> <span id="profile-email">Cargando...</span></br>
+            <br><strong>Telefono:</strong> <span id="profile-phone">Cargando...</span></br>
+            <p>
+                <strong>Nombre de usuario:</strong>
+                <span id="profile-username-display" style="display: inline-flex; align-items: center;">cargando...</span>
+                <button id="edit-username-btn" title="Editar nombre de usuario">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <input type="text" id="profile-username-input" class="hidden" maxlength="25" />
+            </p>
 
-            <p><strong>Nombre:</strong> <span id="profile-name" th:text="${username}"></span></p>
-            <p><strong>Apellido:</strong> <span id="profile-lastName">Cargando...</span></p>
-            <p><strong>Alias:</strong> <span id="profile-alias">Cargando...</span></p>
-            <p><strong>Telefono:</strong> <span id="profile-phone">Cargando...</span></p>
-            <p><strong>Correo:</strong> <span id="profile-email">Cargando...</span></p>
-            <p><strong>Dni:</strong> <span id="profile-dni">Cargando...</span></p>
-            <button class="action-button">Action</button>
+            <p>
+                <strong>Alias:</strong>
+                <span id="profile-alias-display" style="display: inline-flex; align-items: center;">cargando...</span>
+                <button id="edit-alias-btn" title="Editar alias">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <input type="text" id="profile-alias-input" class="hidden" maxlength="25" />
+            </p>
         </div>
     </div>
 </div>
