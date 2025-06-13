@@ -29,9 +29,3 @@ document.addEventListener("DOMContentLoaded", () => {
         balanceVisible = !balanceVisible;
     });
 });
-
-function toggleTheme() {
-    const body = document.body;
-    const isDark = body.classList.toggle("dark-mode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-}

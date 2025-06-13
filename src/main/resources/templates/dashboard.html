@@ -13,58 +13,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="light-mode">
-<header class="header">
-    <div class="header-left">
-        <img src="/img/logo.svg" alt="Logo ArCash" class="logo">
-        <h2>Ar<span class="arc">Cash</span></h2>
-    </div>
-    <div class="header-right">
-        <button id="toggle-mode" class="icon-button" title="Cambiar modo">
-            <i class="fa-regular fa-lightbulb"></i>
-        </button>
-        <button class="profile-button" onclick="openModal('modalperfil')">
-            <i class="fa-solid fa-user"></i>
-            <span class="welcome">Hola, <span th:text="${nombre}">Usuario</span></span>
-        </button>
-    </div>
-</header>
+    <header class="header">
 
-<main class="main-container">
-    <section class="balance-section">
-        <div class="balance-card">
-            <div class="balance-header">
-                <span class="label">Dinero disponible</span>
-                <button id="toggle-visibility" class="icon-button">
-                    <i class="fa-regular fa-eye" id="eye-icon"></i>
-                </button>
+        <div class="header-left">
+            <img src="/img/logo.svg" alt="Logo ArCash" class="logo">
+            <h2>Ar<span class="arc">Cash</span></h2>
+        </div>
+
+        <div class="header-right">
+            <button id="toggle-mode" class="icon-button" title="Cambiar modo">
+                <i class="fa-regular fa-lightbulb"></i>
+            </button>
+            <button class="profile-button" onclick="openModal('modalperfil')">
+                <i class="fa-solid fa-user"></i>
+                <span class="welcome">Hola, <span th:text="${nombre}">Usuario</span></span>
+            </button>
+        </div>
+
+    </header>
+
+    <main class="main-container">
+        <section class="balance-section">
+            <div class="balance-card">
+                <div class="balance-header">
+                    <span class="label">Dinero disponible</span>
+                    <button id="toggle-visibility" class="icon-button">
+                        <i class="fa-regular fa-eye" id="eye-icon"></i>
+                    </button>
+                </div>
+                <div class="amount" id="balance">$2960,34</div>
+                <button class="cvu-button" onclick="openModal('modal1')">CVU</button>
             </div>
-            <div class="amount" id="balance">$2960,34</div>
-            <button class="cvu-button" onclick="openModal('modal1')">CVU</button>
-        </div>
 
-        <div class="action-buttons">
-            <button class="btn" onclick="openModal('modal2')">Ingresar dinero</button>
-            <button class="btn" onclick="openModal('modaltransferir')">Transferir</button>
-            <button class="btn full" onclick="openModal('modalcalculadora')">Calculadora de Impuestos</button>
-        </div>
-    </section>
+            <div class="action-buttons">
+                <button class="btn" onclick="openModal('modal2')">Ingresar dinero</button>
+                <button class="btn" onclick="openModal('modaltransferir')">Transferir</button>
+                <button class="btn full" onclick="openModal('modalcalculadora')">Calculadora de Impuestos</button>
+            </div>
+        </section>
 
-    <section class="movements-section">
-        <div class="movements-card">
-            <h2 class="movements-h2">Últimos movimientos</h2>
-            <ul class="movements-list">
-                <li th:each="mov : ${movimientos}" th:text="${mov}">Ejemplo de movimiento</li>
-            </ul>
-        </div>
-    </section>
+        <section class="movements-section">
+            <div class="movements-card">
+                <h2 class="movements-h2">Últimos movimientos</h2>
+                <ul class="movements-list">
+                    <li th:each="mov : ${movimientos}" th:text="${mov}">Ejemplo de movimiento</li>
+                </ul>
+            </div>
+        </section>
 
-</main>
-<div th:replace="modals :: modal1"></div>
-<div th:replace="modals :: modal2"></div>
-<div th:replace="modals :: modalperfil"></div>
-<div th:replace="modals :: modaltransferir"></div>
-<div th:replace="modals :: modalcalculadora"></div>
-
+    </main>
+    <div th:replace="modals :: modal1"></div>
+    <div th:replace="modals :: modal2"></div>
+    <div th:replace="modals :: modalperfil"></div>
+    <div th:replace="modals :: modaltransferir"></div>
+    <div th:replace="modals :: modalcalculadora"></div>
 </body>
 
 </html>
